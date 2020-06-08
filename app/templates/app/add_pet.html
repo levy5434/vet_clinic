@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Add new pet"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 border">
+<form action = "{% url 'app:add_pet' client.id%}" method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button name='submit'>{% trans "Add pet"%}</button>
+</form>
+</div>
+{% endblock content %}

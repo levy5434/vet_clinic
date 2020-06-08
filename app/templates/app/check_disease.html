@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2><a class="text-dark" href="{% url 'app:disease' animal.id %}" >{{disease.animal}}</a></h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border">
+    <h4>{{disease.name}}</h4>
+    <p>{% trans "Recommendations:"%} {{disease.recommendations}}</p>
+    <p>Status: {{disease.status}}</p>
+    <p>{% trans "Register date:"%} {{disease.register_date}}</p>
+    {% if disease.cure_data %}
+    <p>{% trans "Cure date:"%} {{disease.cure_data}}</p>
+    {% endif %}
+</div>
+<h4>{% trans "Medicines"%}</h4>
+    {% for medicine in medicines%}
+    <div class="container p-3 my-3 border">
+        <h5>{% trans "Name:"%} {{medicine}}</h5>
+        <p>{% trans "Dose:"%} {{medicine.dose}}</p>
+        {% if medicine.status == True%}
+        <p>Status: {% trans "Active" %}</p>
+        {% else %}
+        <p>Status: {% trans "Past"%}</p>
+        {% endif %}
+        <p>{% trans "Introduction date:"%} {{medicine.introduction_date}}</p>
+        {% if medicine.end_data != Null%}
+        <p>{% trans "End data:"%} {{medicine.end_data}}</p>
+        {% endif%}
+    </div>    
+    {% empty %}
+        <p>{% trans "No medicines"%}</p>
+    {%endfor%}
+{%endblock content%}

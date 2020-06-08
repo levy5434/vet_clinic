@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2><a class="text-dark" href="{% url 'app:client' client.id %}">{{client.first_name}} {{client.last_name}}</a></h2>
+{% endblock page_header %}
+{% block content %}
+<h3>{{pet}}</h3>
+<div class="list-group">
+<a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' pet.id %}">{% trans "Add new disease"%}</a>
+<br></br>
+    {% if actual_diseases%}
+    <h5>{% trans "Actual"%}</h5>
+    {% for disease in actual_diseases%}
+      <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:pet_disease' disease.id%}">{{disease}}</a>
+    {% endfor %}
+    {% endif%}
+    {% if past_diseases%}
+    <h5>{% trans "Past diseases"%}</h5>
+    {% for disease in past_diseases%}
+        <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:pet_disease' disease.id%}">{{disease}}</a>
+    {% endfor %}
+    {% endif %}
+</div>    
+{% endblock content %}
+

@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "User profile"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border">
+<h3>{{user.first_name}} {{user.last_name}}</h3>
+<p>{{user.email}}</p>
+<p>{% trans "Date of birth:"%} {{profile.birth_date}}</p>
+<p>{% trans "City:"%} {{profile.city}}</p>
+<p>{% trans "Phone number:"%} {{profile.phone_number}}</p>
+<a class="btn btn-secondary" href="{% url 'user:edit_profile' %}">{% trans "Edit profile"%}</a>
+  <p></p>
+<a class="btn btn-secondary" href="{% url 'user:change_password' %}">{% trans "Change password"%}</a>
+</div>
+{%endblock content%}

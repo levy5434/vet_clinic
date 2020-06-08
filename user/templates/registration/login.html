@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Log in to your account."%}</h2>
+{% endblock page_header %}
+{% block content %}
+	{% if form.errors%}
+	<p>{% trans "Username password didn't match"%}</p>
+  {% endif %}
+  <div class="container p-3 my-3 bg-light text-black border">
+  <form method="post" action="{% url 'user:login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name='submit'>{% trans "Log in"%}</button>
+      <input type ="hidden" name='next' value="{% url 'app:index'%}" />
+  </form>
+  </div>
+{% endblock content %}  

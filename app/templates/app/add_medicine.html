@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Add new medicine to"%} {{disease.animal}}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 border">
+<form action = "{% url 'app:add_medicine' disease.id%}" method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button name='submit'>{% trans "Add medicine"%}</button>
+</form>
+</div>
+{% endblock content %}

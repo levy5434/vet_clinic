@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+    <h2><a class="text-dark" href="{% url 'app:pet' pet.id%}">{{disease.animal}}</a></h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border">
+    <h3>{{disease.name}}</h3>
+    <p>{% trans "Recommendations:"%} {{disease.recommendations}}</p>
+    {% if disease.status == True%}
+    <p>Status: {% trans "Active" %}</p>
+    {% else %}
+    <p>Status: {% trans "Past" %} </p>
+    {% endif %}
+    <p>{% trans "Register date:"%} {{disease.register_date}}</p>
+    {% if disease.cure_data %}
+    <p>{% trans "Cure date:"%} {{disease.cure_data}}</p>
+    {% endif %}
+    <a class="btn btn-secondary" href="{% url 'app:edit_disease' disease.id%}" role="button">{% trans "Edit disease"%}</a>
+</div>   
+    <h4>{% trans "Medicines"%}</h4>
+    <a class="btn btn-dark" href="{% url 'app:add_medicine' disease.id %}" role="button">{% trans "Add new medicine"%}</a>
+    {% for medicine in medicines%}
+    <div class="container p-3 my-3 border">
+        <h5>{% trans "Name:"%} {{medicine}}</h5>
+        <p>{% trans "Dose:"%} {{medicine.dose}}</p>
+        {% if medicine.status == True%}
+        <p>Status: {% trans "Active" %}</p>
+        {% else %}
+        <p>Status: {% trans "Past" %} </p>
+        {% endif %}
+        <p>{% trans "Introduction date:"%} {{medicine.introduction_date}}</p>
+        {% if medicine.end_data != Null%}
+        <p>{% trans "End date:"%} {{medicine.end_data}}</p>
+        {% endif%}
+        <a class="btn btn-secondary" href="{% url 'app:edit_medicine' medicine.id%}" role="button">{% trans "Edit medicine"%}</a>
+    </div>    
+    {% empty %}
+        <a class="list-group-item list-group-item-action">{% trans "No medicines"%}</a>
+    {%endfor%}
+{%endblock content%}

@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "My pets" %}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="list-group">
+    {% for animal in animals%}
+        <a href="{% url 'app:disease' animal.id%}" class="list-group-item list-group-item-action list-group-item-secondary">{{animal}}</a>
+        <p></p>
+    {% empty %}
+        <a class="list-group-item list-group-item-action">{% trans "No pets yet." %}</a>
+    {%endfor%}
+</div>
+{% endblock content%}

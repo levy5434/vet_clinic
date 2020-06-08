@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{{animal}}</h2>
+<p>{% trans "Date of birth:"%} {{animal.birth_date}}</p>
+{% endblock page_header %}
+{% block content %}
+{% if not actual_diseases and  not past_diseases%}
+{% trans "No diseases"%}
+{% endif %}
+    {% if actual_diseases %}
+    <h5>{% trans "Actual"%}</h5>
+    <div class="list-group">
+    {% for disease in actual_diseases%}
+      <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+    {% endfor %}
+    {% endif %}
+  {% if past_diseases %}
+    <h5>{% trans "Past diseases"%}</h5>
+    {% for disease in past_diseases%}
+      <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+    {%endfor%}
+  {% endif%}
+  </div>
+{% endblock content %}

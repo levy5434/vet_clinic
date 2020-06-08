@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-08 19:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%"
+"100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%"
+"10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: .\app\templates\app\add_disease.html:4
+msgid "Add new disease to"
+msgstr "Dodaj nową chorobe"
+
+#: .\app\templates\app\add_disease.html:14
+msgid "Add disease"
+msgstr "Dodaj chorobę"
+
+#: .\app\templates\app\add_medicine.html:4
+msgid "Add new medicine to"
+msgstr "Dodaj nowy lek"
+
+#: .\app\templates\app\add_medicine.html:11
+msgid "Add medicine"
+msgstr "Dodaj lek"
+
+#: .\app\templates\app\add_pet.html:4 .\app\templates\app\client.html:11
+msgid "Add new pet"
+msgstr "Dodaj nowe zwierzę"
+
+#: .\app\templates\app\add_pet.html:11
+msgid "Add pet"
+msgstr "Dodaj zwierzę"
+
+#: .\app\templates\app\animals.html:4 .\app\templates\app\base.html:26
+msgid "My pets"
+msgstr "Moje zwierzęta"
+
+#: .\app\templates\app\animals.html:12
+msgid "No pets yet."
+msgstr "Brak zwierząt"
+
+#: .\app\templates\app\base.html:28
+msgid "Browse Clients"
+msgstr "Przeglądaj klientów"
+
+#: .\app\templates\app\base.html:35
+msgid "Hello,"
+msgstr "Witaj,"
+
+#: .\app\templates\app\base.html:38
+msgid "Log out"
+msgstr "Wyloguj"
+
+#: .\app\templates\app\base.html:42
+#: .\user\templates\registration\register.html:13
+msgid "Register"
+msgstr "Zarejestruj"
+
+#: .\app\templates\app\base.html:45
+#: .\user\templates\registration\login.html:14
+msgid "Log in"
+msgstr "Zaloguj"
+
+#: .\app\templates\app\base.html:59
+msgid "Warning!"
+msgstr "Uwaga"
+
+#: .\app\templates\app\base.html:59
+msgid ""
+"This site uses cookies.By staying on the site you agree to save them in your "
+"browser."
+msgstr ""
+"Niniejsza strona wykorzystuje pliki cookies. Pozostając na stronie godzisz "
+"się na ich zapisywanie w Twojej przeglądarce."
+
+#: .\app\templates\app\base.html:60
+msgid "Close"
+msgstr "Zamknij"
+
+#: .\app\templates\app\browse_clients.html:4
+msgid "Clients"
+msgstr "Przeglądaj klientów"
+
+#: .\app\templates\app\browse_clients.html:11
+msgid "No patients"
+msgstr "Brak pacjentów"
+
+#: .\app\templates\app\check_disease.html:9
+#: .\app\templates\app\pet_disease.html:9
+msgid "Recommendations:"
+msgstr "Zalecenia:"
+
+#: .\app\templates\app\check_disease.html:11
+#: .\app\templates\app\pet_disease.html:14
+msgid "Register date:"
+msgstr "Data rejestracji:"
+
+#: .\app\templates\app\check_disease.html:13
+#: .\app\templates\app\pet_disease.html:16
+msgid "Cure date:"
+msgstr "Data wyleczenia:"
+
+#: .\app\templates\app\check_disease.html:16
+#: .\app\templates\app\pet_disease.html:20
+msgid "Medicines"
+msgstr "Leki"
+
+#: .\app\templates\app\check_disease.html:19
+#: .\app\templates\app\pet_disease.html:24
+msgid "Name:"
+msgstr "Nazwa:"
+
+#: .\app\templates\app\check_disease.html:20
+#: .\app\templates\app\pet_disease.html:25
+msgid "Dose:"
+msgstr "Dawka:"
+
+#: .\app\templates\app\check_disease.html:22
+#: .\app\templates\app\pet_disease.html:11
+#: .\app\templates\app\pet_disease.html:27
+msgid "Active"
+msgstr "Aktywna"
+
+#: .\app\templates\app\check_disease.html:24
+#: .\app\templates\app\pet_disease.html:13
+#: .\app\templates\app\pet_disease.html:29
+msgid "Past"
+msgstr "Przebyta"
+
+#: .\app\templates\app\check_disease.html:26
+#: .\app\templates\app\pet_disease.html:31
+msgid "Introduction date:"
+msgstr "Data wprowadzenia:"
+
+#: .\app\templates\app\check_disease.html:28
+msgid "End data:"
+msgstr "Data zakończenia:"
+
+#: .\app\templates\app\check_disease.html:32
+#: .\app\templates\app\pet_disease.html:38
+msgid "No medicines"
+msgstr "Brak leków"
+
+#: .\app\templates\app\client.html:5
+msgid "Email:"
+msgstr "Email:"
+
+#: .\app\templates\app\client.html:6
+#: .\user\templates\registration\profile.html:11
+msgid "City:"
+msgstr "Miasto:"
+
+#: .\app\templates\app\client.html:7
+#: .\user\templates\registration\profile.html:12
+msgid "Phone number:"
+msgstr "Numer telefonu:"
+
+#: .\app\templates\app\client.html:17
+#, fuzzy
+#| msgid "My pets"
+msgid "No pets"
+msgstr "Brak zwierząt"
+
+#: .\app\templates\app\disease.html:5
+#: .\user\templates\registration\profile.html:10
+msgid "Date of birth:"
+msgstr "Data urodzenia:"
+
+#: .\app\templates\app\disease.html:9
+msgid "No diseases"
+msgstr "Brak zarejestrowanych chorób"
+
+#: .\app\templates\app\disease.html:12 .\app\templates\app\pet.html:12
+msgid "Actual"
+msgstr "Aktualne"
+
+#: .\app\templates\app\disease.html:19 .\app\templates\app\pet.html:18
+msgid "Past diseases"
+msgstr "Przebyte choroby"
+
+#: .\app\templates\app\edit_disease.html:7
+msgid "Edit disease:"
+msgstr "Edytuj chorobe:"
+
+#: .\app\templates\app\edit_disease.html:15
+#: .\app\templates\app\edit_medicine.html:12
+#: .\user\templates\registration\edit_profile.html:12
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: .\app\templates\app\edit_medicine.html:7
+msgid "Edit medicine:"
+msgstr "Edytuj lek:"
+
+#: .\app\templates\app\index.html:5
+msgid "Welcome to the E-Clinic"
+msgstr "Witaj w E-Clinic"
+
+#: .\app\templates\app\index.html:6
+msgid "After logging in you will see the user panel."
+msgstr "Po zalogowaniu zobaczysz panel uzytkownika."
+
+#: .\app\templates\app\pet.html:9
+msgid "Add new disease"
+msgstr "Dodaj nową chorobę"
+
+#: .\app\templates\app\pet_disease.html:18
+msgid "Edit disease"
+msgstr "Edytuj chorobę"
+
+#: .\app\templates\app\pet_disease.html:21
+msgid "Add new medicine"
+msgstr "Dodaj lek"
+
+#: .\app\templates\app\pet_disease.html:33
+#, fuzzy
+#| msgid "End data:"
+msgid "End date:"
+msgstr "Data zakończenia:"
+
+#: .\app\templates\app\pet_disease.html:35
+msgid "Edit medicine"
+msgstr "Edytuj lek"
+
+#: .\user\templates\registration\change_password.html:4
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: .\user\templates\registration\change_password.html:11
+msgid "Confirm"
+msgstr "Potwierdz"
+
+#: .\user\templates\registration\edit_profile.html:4
+#: .\user\templates\registration\profile.html:13
+msgid "Edit profile"
+msgstr "Edytuj profil"
+
+#: .\user\templates\registration\logged_out.html:4
+msgid "You have been looged out. Thank you for visiting!"
+msgstr "Zostałeś wylogowany. Dziękujemy za wizyte!"
+
+#: .\user\templates\registration\login.html:4
+msgid "Log in to your account."
+msgstr "Zaloguj do konta"
+
+#: .\user\templates\registration\login.html:8
+msgid "Username password didn't match"
+msgstr "Błędne hasło"
+
+#: .\user\templates\registration\profile.html:4
+msgid "User profile"
+msgstr "Profil użytkownika"
+
+#: .\user\templates\registration\profile.html:15
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: .\user\templates\registration\register.html:4
+msgid "Register Page"
+msgstr "Zarejestruj"
+
+#: .\user\templates\registration\register.html:15
+msgid "Home"
+msgstr "Strona domowa"
+
+msgid "Cure Data"
+msgstr "Data wyleczenia:"
+
+msgid "Date of birth: "
+msgstr "Data urodzenia:"
+
+msgid "name"
+msgstr "Nazwa:"
+
+msgid "specie"
+msgstr "Gatunek"
+
+msgid "birth date"
+msgstr "Data urodzenia"
+
+msgid "register date"
+msgstr "Data rejestracji:"
+
+msgid "owner"
+msgstr "Właściciel"
+
+msgid "animal"
+msgstr "Zwierzę"
+
+msgid "recommendations"
+msgstr "Zalecenia:"
+
+msgid "cure date"
+msgstr "Data wyleczenia:"
+
+msgid "introduction date"
+msgstr "Data wprowadzenia:"
+
+msgid "end date"
+msgstr "Data zakończenia:"
+
+msgid "phone_number"
+msgstr "numer telefonu"
+
+msgid "city"
+msgstr "miasto"
+
+msgid "dose"
+msgstr "dawka"
+
+msgid "Phone number"
+msgstr "Numer telefonu:"
+
+msgid "First Name"
+msgstr "Imie"
+
+msgid "Name should have first letter upper case and the rest lower case"
+msgstr "Imię powinno zaczynać się z dużej litery a reszta z małej"
+
+msgid "Last Name"
+msgstr "Nazwisko"
+
+msgid "Surname should have first letter upper case and the rest lower case"
+msgstr "Nazwisko powinno zaczynać się z dużej litery a reszta z małej"
+
+msgid "City"
+msgstr "Miasto:"
+
+msgid ""
+"City should have first letter upper case and cannot contain special "
+"characters"
+msgstr ""
+"Miasto powinno zaczynać się z dużej litery i nie zawierać znaków "
+"specjalnych"
+
+msgid ""
+"Phone number must be entered in the format: '+999999999'. Up to 15 digits "
+"allowed."
+msgstr "Numer telefonu musi być podany w formacie '+999999999'. Do 15 cyfer"
+
+msgid "Date of birth"
+msgstr "Data urodzenia"
+
+msgid "I am healthy!"
+msgstr "Zdrowy"
+
+msgid "Birth date"
+msgstr "Data urodzenia"

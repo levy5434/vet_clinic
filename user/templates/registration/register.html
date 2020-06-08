@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Register Page"%}</h2>
+{% endblock page_header %}
+{% block content %} 
+<div class="container p-3 my-3 bg-light text-black border">
+    <div class = "offser-3 col-md-6">
+    <form method="post" action="{% url 'user:register' %}">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit">{% trans "Register"%}</button>
+        <br><br>
+        <a href="{% url 'app:index' %}">{% trans "Home"%}</a>
+    </form>
+</div>
+</div>
+{% endblock content %}

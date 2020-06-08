@@ -1,0 +1,19 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2><a class="text-dark" href="{% url 'app:pet_disease' disease.id %}">{{disease.animal}} {{disease}}</a></h2>
+{% endblock page_header %}
+{%  block content%}
+<h4>{% trans "Edit disease:"%}</h4>
+<div class="container p-3 my-3 border">
+<div class = "offser-3 col-md-6">
+<form action = "{% url 'app:edit_disease' disease.id %}" method='post'>
+    {% csrf_token %}
+    <div class="form-group">
+    {{form.as_p}}
+    </div>
+    <button name="submit">{% trans "Save changes"%}</button>
+</form> 
+</div>
+</div>
+{% endblock content %}

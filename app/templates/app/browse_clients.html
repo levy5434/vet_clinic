@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Clients"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="list-group">
+    {% for client in clients%}
+    <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}},{{client.profile.city}}</a>
+    {% empty %}
+        <h5>{% trans "No patients"%}</h5>
+    {%endfor%}
+</div>    
+{% endblock content %}

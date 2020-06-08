@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{{client.first_name}} {{client.last_name}}</h2>
+<p>{% trans "Email:" %} {{client.email}}</p>
+<p>{% trans "City:" %} {{client.profile.city}}</p>
+<p>{% trans "Phone number:" %} {{client.profile.phone_number}}</p>
+{% endblock page_header %}
+{% block content %}
+<div class="list-group">
+<a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:add_pet' client.id %}">{% trans "Add new pet"%}</a>
+<br></br>
+    {% for animal in animals%}
+        <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:pet' animal.id %}">{{animal}}</a>
+        <p></p>
+        {% empty %}
+        <h5>{% trans "No pets"%}</h5>
+    {%endfor%}
+</div>    
+{% endblock content %}
