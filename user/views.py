@@ -23,6 +23,7 @@ def register(request):
                             )
             profile.save()
             return redirect('user:login') 
+    messages.error(request, "Error")        
     context = {'user_form': user_form,'profile_form': profile_form} 
     return render(request, 'registration/register.html', context)
 

@@ -25,15 +25,19 @@ SECRET_KEY = '-f#+joe!6^)eapmlo2)$e!viu9j21-$!79&ii2^j)2@ia@4tdo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    #my apps
     'app',
     'user',
     'bootstrap4',
+    'widget_tweaks',
+    'crispy_forms',
+    #default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,10 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware', 
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

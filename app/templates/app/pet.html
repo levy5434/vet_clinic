@@ -5,8 +5,11 @@
 {% endblock page_header %}
 {% block content %}
 <h3>{{pet}}</h3>
+<h6>{% trans "Date of birth:"%} {{pet.birth_date}}</h6>
 <div class="list-group">
 <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' pet.id %}">{% trans "Add new disease"%}</a>
+<p></p>
+<a class="list-group-item list-group-item-action list-group-item-danger" href="{% url 'app:pet_delete' pet.id %}">{% trans "Delete pet"%}</a>
 <br></br>
     {% if actual_diseases%}
     <h5>{% trans "Actual"%}</h5>

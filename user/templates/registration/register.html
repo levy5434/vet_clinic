@@ -1,18 +1,50 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% block page_header %}
 <h2>{% trans "Register Page"%}</h2>
 {% endblock page_header %}
-{% block content %} 
+{% block content %}
 <div class="container p-3 my-3 bg-light text-black border">
-    <div class = "offser-3 col-md-6">
+    <div class = "offser-3 col-md-4">
     <form method="post" action="{% url 'user:register' %}">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type="submit">{% trans "Register"%}</button>
-        <br><br>
-        <a href="{% url 'app:index' %}">{% trans "Home"%}</a>
+        {% for field in user_form %}
+          {{field.label}}
+          {% if user_form.is_bound %}
+            {% if field.errors %}
+              {% render_field field class="form-control is-invalid" %}
+              {% for error in field.errors %}
+                <small class="text-danger">{{ error}}</small>
+              {% endfor %}
+              <p></p>
+            {% elif field.name == 'password1' and user_form.password2.errors %}
+              {% render_field field class="form-control is-invalid" %}
+            {% else %}
+              {% render_field field class="form-control is-valid" %}
+          {% endif %}
+        {% else %}
+          {% render_field field class="form-control" %}
+        {% endif %}
+        {% endfor %}
+        <p></p>
+        {% for field in profile_form %}
+        {{field.label}}
+        {% if user_form.is_bound %}
+        {% if field.errors %}
+          {% render_field field class="form-control is-invalid" %}
+          {% for error in field.errors %}
+            <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+          <p></p>
+        {% else %}
+          {% render_field field class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field field class="form-control" %}
+      {% endif %}
+        {% endfor %}
+    <button type="submit">{% trans "Register"%}</button>
     </form>
 </div>
 </div>

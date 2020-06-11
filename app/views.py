@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import Animal, Disease,Medicine
 from .forms import AnimalForm,DiseaseForm,MedicineForm
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from user.models import Profile
 from django.contrib.auth.decorators import login_required
@@ -57,6 +58,9 @@ def add_pet(request,client_id):
 @staff_member_required(login_url='app:index')
 def browse_clients(request):
     clients = User.objects.all()
+    query = request.GET.get("q")
+    if query:
+        clients = clients.filter(last_name__icontains=query)
     context = {'clients':clients}
     return render(request, 'app/browse_clients.html', context)    
 
@@ -98,6 +102,16 @@ def add_disease(request,pet_id):
     return render(request,'app/add_disease.html',context)
 
 @staff_member_required(login_url='app:index')
+def pet_delete(request,pet_id):
+    pet = get_object_or_404(Animal,id=pet_id)
+    client = pet.owner
+    if request.method == "POST":
+        pet.delete()
+        return redirect('app:client', client_id=client.id)
+    context = {'client':client,'pet':pet}    
+    return render(request,"app/delete_pet.html",context)
+
+@staff_member_required(login_url='app:index')
 def pet_disease(request,disease_id):
     disease = Disease.objects.get(id=disease_id)
     pet = disease.animal
@@ -133,7 +147,27 @@ def edit_medicine(request,medicine_id):
             form.save()
             return redirect('app:pet_disease',disease_id=disease.id)    
     context ={'disease':disease,'medicine':medicine,'form':form}
-    return render(request,'app/edit_medicine.html',context)  
+    return render(request,'app/edit_medicine.html',context)
+
+@staff_member_required(login_url='app:index')
+def medicine_delete(request,medicine_id):
+    medicine = get_object_or_404(Medicine,id=medicine_id)
+    disease = medicine.disease
+    if request.method == "POST":
+        medicine.delete()
+        return redirect('app:pet_disease', disease_id=disease.id)
+    context = {'disease':disease,'medicine':medicine}    
+    return render(request,"app/delete_medicine.html",context)
+
+@staff_member_required(login_url='app:index')
+def disease_delete(request,disease_id):
+    disease = get_object_or_404(Disease,id=disease_id)
+    pet = disease.animal
+    if request.method == "POST":
+        disease.delete()
+        return redirect('app:pet', pet_id=pet.id)
+    context = {'disease':disease,'pet':pet}    
+    return render(request,"app/delete_disease.html",context)    
 
 @staff_member_required(login_url='app:index')
 def edit_disease(request,disease_id):

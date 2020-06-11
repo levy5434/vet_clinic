@@ -9,9 +9,14 @@
     {% load static %}
     {% bootstrap_css%}
     {% bootstrap_javascript jquery="full"%}
+    <style type='text/css'>
+    .asteriskField{
+      display:none;
+    }
+    </style>
   </head>
   <body>
-    
+
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
       <a class="navbar-brand" href="{% url 'app:index'%}">
           E-Clinic</a>
@@ -47,7 +52,7 @@
         </ul>
       </div>
     </nav>
-    <main role="main" class="container">
+    <main class="container">
       <div class="pb-2 mb-2 border-bottom">
         {% block page_header %}{% endblock page_header %}
       </div>
@@ -56,10 +61,10 @@
       </div>
     </main>
     <section id="cookie-warn">
-      <p><strong>{% trans "Warning!"%}</strong>{% trans "This site uses cookies.By staying on the site you agree to save them in your browser."%}
-      <a href="javascript:void(0);" id="close-cookie-warn">{% trans "Close" %}</a></p>
-  </section>
-  </body>
-  <script src="{% static 'cookies.js' %}"></script>
+    <h6><strong>{% trans "Warning!"%}</strong>{% trans "This site uses cookies.By staying on the site you agree to save them in your browser."%}
+      <a href="javascript:void(0);" id="close-cookie-warn">{% trans "Close" %}</a></h6>
+    </section>
   <link rel="stylesheet" href="{% static 'cookies.css' %}">
+  <script src="{% static 'cookies.js' %}"></script>
+  </body>
 </html>
