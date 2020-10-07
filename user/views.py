@@ -4,7 +4,7 @@ from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm,ProfileForm
-from .models import Profile,User
+from .models import Profile,User,Doctor
 from django.utils.translation import gettext as _
 
 def register(request):

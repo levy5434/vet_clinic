@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext as _, gettext_lazy as _lazy
-from .models import Profile
+from .models import Profile, Slot, Doctor
 from django.core.validators import RegexValidator
 
 class DateInput(forms.DateInput):

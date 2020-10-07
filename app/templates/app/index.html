@@ -12,4 +12,11 @@
 <p></p>
 <p>Admin/Staff</p>
 <p>admin:Zaliczenie</p>
+<a class="list-group-item list-group-item-action list-group-item-success"
+      href="{% url 'app:make_appointment'%}">Make appointment </a>
+{% if no_slot_appointments%}
+    <br>
+    <a class="list-group-item list-group-item-action list-group-item-danger"
+        href="{% url 'app:appointments_to_reschedule'%}">Reschedule appointments</a>
+{%endif%}
 {% endblock content %}

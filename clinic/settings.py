@@ -110,6 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+TIME_INPUT_FORMATS = [
+    '%H:%M:%S',     # '14:30:59'
+    '%H:%M:%S.%f',  # '14:30:59.000200'
+    '%H:%M',        # '14:30'
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -132,3 +138,9 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 LOGIN_URL = 'user:login'
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

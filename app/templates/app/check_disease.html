@@ -1,23 +1,31 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
+{% load user_tags %}
 {% block page_header %}
-<h2><a class="text-dark" href="{% url 'app:disease' animal.id %}" >{{disease.animal}}</a></h2>
+    <h2><a class="text-dark" href="{% url 'app:disease' animal.id%}">{{disease.animal}}</a></h2>
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3 bg-light text-black border">
-    <h4>{{disease.name}}</h4>
+    <h3>{{disease.name}}</h3>
     <p>{% trans "Recommendations:"%} {{disease.recommendations}}</p>
     {% if disease.status == True%}
-        <p>Status: {% trans "Active" %}</p>
-        {% else %}
-        <p>Status: {% trans "Past"%}</p>
+    <p>Status: {% trans "Active" %}</p>
+    {% else %}
+    <p>Status: {% trans "Past" %} </p>
     {% endif %}
     <p>{% trans "Register date:"%} {{disease.register_date}}</p>
     {% if disease.cure_data %}
     <p>{% trans "Cure date:"%} {{disease.cure_data}}</p>
     {% endif %}
-</div>
-<h4>{% trans "Medicines"%}</h4>
+    {% if request.user|has_group:"Doctors" %}
+    <a class="btn btn-secondary" href="{% url 'app:edit_disease' disease.id%}" role="button">{% trans "Edit disease"%}</a>
+    <a class="btn btn-secondary" href="{% url 'app:disease_delete' disease.id%}" role="button">{% trans "Delete disease"%}</a>
+    {%endif%}
+</div>   
+    <h4>{% trans "Medicines"%}</h4>
+    {% if request.user|has_group:"Doctors" %}
+    <a class="btn btn-dark" href="{% url 'app:add_medicine' disease.id %}" role="button">{% trans "Add new medicine"%}</a>
+    {%endif%}
     {% for medicine in medicines%}
     <div class="container p-3 my-3 border">
         <h5>{% trans "Name:"%} {{medicine}}</h5>
@@ -25,14 +33,19 @@
         {% if medicine.status == True%}
         <p>Status: {% trans "Active" %}</p>
         {% else %}
-        <p>Status: {% trans "Past"%}</p>
+        <p>Status: {% trans "Past" %} </p>
         {% endif %}
         <p>{% trans "Introduction date:"%} {{medicine.introduction_date}}</p>
         {% if medicine.end_data != Null%}
-        <p>{% trans "End data:"%} {{medicine.end_data}}</p>
+        <p>{% trans "End date:"%} {{medicine.end_data}}</p>
         {% endif%}
-    </div>
+        {% if request.user|has_group:"Doctors" %}
+        <a class="btn btn-secondary" href="{% url 'app:edit_medicine' medicine.id%}" role="button">{% trans "Edit medicine"%}</a>
+        <a class="btn btn-secondary" href="{% url 'app:medicine_delete' medicine.id%}" role="button">{% trans "Delete medicine"%}</a>
+        {%endif%}
+    </div>    
     {% empty %}
-        <p>{% trans "No medicines"%}</p>
+        <p></p>
+        <a class="list-group-item list-group-item-action">{% trans "No medicines"%}</a>
     {%endfor%}
 {%endblock content%}

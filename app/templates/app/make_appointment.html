@@ -1,0 +1,21 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Make appointment"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="list-group">
+    <div class="dropdown">
+      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose vet service
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for service in services%}
+          <a class="dropdown-item"href="{% url 'app:make_appointment_d' service.id%}">{{service}} </a>
+        {% empty %}
+          <h5>{% trans "No services"%}</h5>
+        {%endfor%}
+      </div>
+    </div>
+</div>
+{% endblock content %}

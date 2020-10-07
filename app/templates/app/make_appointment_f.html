@@ -1,0 +1,42 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block page_header %}
+<h2>{% trans "Make appointment"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border">
+    <div class = "offser-3 col-md-4">
+        <h6>Service: {{service}}</h6>
+        <h6>Doctor: {{doctor}}</h6>
+        <h6>Date: {{slot.date}} - {{time}}</h6>
+        <form action = "{% url 'app:make_appointment_f' service.id slot.id time%}" method='post' onchange="showDiv()">
+            {% csrf_token %}
+            {{ form.animal|as_crispy_field}}
+            <div id="hidden_div" style="display:none;">
+            {{ form.name|as_crispy_field}}
+            {{ form.specie|as_crispy_field}}
+            </div>
+            {{ form.information|as_crispy_field}}
+            <button name='submit'>{% trans "Make appointment"%}</button>
+        </form>
+    </div>
+</div>
+<script>
+    let z = document.getElementById("id_animal").selectedIndex;
+    let z1 = document.getElementsByTagName("option")[z].value;
+    if(!z1){
+            document.getElementById('hidden_div').style.display = "block";
+            }
+            
+    function showDiv(){
+        let z = document.getElementById("id_animal").selectedIndex;
+        let z1 = document.getElementsByTagName("option")[z].value;
+        if(!z1){
+            document.getElementById('hidden_div').style.display = "block";
+        } else{
+            document.getElementById('hidden_div').style.display = "none";
+        }
+    } 
+</script>
+{% endblock content %}

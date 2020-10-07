@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block page_header %}
+<h2>{% trans "Edit appointment"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border">
+    <div class = "offser-3 col-md-4">
+        <h3>Time of visit: {{appointment.start_time}}</h3>
+        {% if form.animal %}
+        <h4>Pet: {{appointment.animal}}</h4>
+        {% endif %}
+        <h5>Service: {{appointment.service}}</h5>
+        <form action = "{% url 'app:edit_appointment' appointment.id%}" method='post'>
+            {% csrf_token %}
+            {% if form.animal %}
+            {{ form.animal.as_hidden}}
+            {% else %}
+            {{ form.animal|as_crispy_field}}
+            {% endif %}
+            {{ form.information|as_crispy_field}}
+            <br>
+            <button name='submit'>{% trans "Edit appointment"%}</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

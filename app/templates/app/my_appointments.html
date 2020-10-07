@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% load user_tags %}
+{% block page_header %}
+<h5>{% trans "My appointments"%}</h5>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endblock page_header %}
+{% block content %}
+{% if upcoming_appointment%}
+<div class="container p-4 my-4 bg-light text-black border position-relative">
+    <h3>Date of visit: {{upcoming_appointment.date}} {{upcoming_appointment.start_time}}</h3>
+    {% if upcoming_appointment.animal %}
+    <h4><a href="{% url 'app:disease' upcoming_appointment.animal.id %}">Pet: {{upcoming_appointment.animal}}</a></h4>
+    {% endif %}
+    <h5>Service: {{upcoming_appointment.service}}</h5>
+    <h5>Doctor: {{upcoming_appointment.doctor}}</h5>
+    {% if upcoming_appointment.information %}
+    <p>Additional information: {{upcoming_appointment.information}}</p>
+    {% endif %}
+    <a class="btn btn-danger float-right" href="{% url 'app:delete_appointment' upcoming_appointment.id%}">{% trans "Delete appointment"%}</a>
+    <br>
+</div>
+{% endif %}    
+{% if appointments %}
+<div class="list-group">
+    {% for appointment in appointments%}
+        <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:appointment' appointment.id%}">
+            {{appointment.start_time}} {{appointment.date}} {{appointment}}</a>
+        <p></p>
+    {%endfor%}
+</div>
+{%else%}
+<div class="container p-3 my-3 bg-light text-black border">
+    <h4>{% trans "No appointments registered" %}</h4>
+</div>
+{% endif %}
+{% endblock content %}

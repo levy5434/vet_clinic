@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "My schedule"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 my-3 bg-light text-black border rounded">
+  {% if today %}
+  <div class="container p-3 mb-4 bg-light text-black border rounded position-relative">
+    <h3><a class="stretched-link" href="{% url 'app:slot' today.id%}">{{today|date:'l'}} {{today.date}}</a></h3>
+    <h5>{% trans "Working hours" %}: {{today.start_time}} - {{today.end_time}}</h5>
+  </div>
+  {% endif %}
+  {% if today_free %}
+  <div class="container p-3 mb-4 bg-light text-black border rounded position-relative">
+    <h3>Today is </h3>
+    <h3>{{today_free|date:'l'}} {{today_free}}</h3>
+    <h5>{% trans "Free day" %}</h5>
+  </div>
+  {% endif %}
+  <div class="d-flex justify-content-center"><h4>Week: {{first}} - {{last}}</h4></div>
+  <div class="list-group">
+    {% for slot in slots%}
+    <a class="list-group-item list-group-item-action list-group-item-secondary"
+      href="{% url 'app:slot' slot.id%}">{{slot.date | date:"l"}} {{slot}}</a>
+    {% empty %}
+        <h5>{% trans "Free"%}</h5>
+    {%endfor%}
+  </div>
+  <br>
+  <div class="row">
+    {% if week != 0 %}
+    <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
+      href="{% url 'app:my_schedule' p_week%}">Previous week </a></div>
+    {%else%}
+    <div class = 'col'></div>
+    {% endif %}
+    <div class="col-6"></div>
+    <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
+        href="{% url 'app:my_schedule' n_week%}">Next week </a></div>
+  </div>    
+</div>
+{% endblock content %}

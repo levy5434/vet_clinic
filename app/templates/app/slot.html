@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% load user_tags %}
+{% block page_header %}
+<h3>{{slot.date}}</h3>
+<h5>{% trans "Working hours"%}: {{slot.start_time}} - {{slot.end_time}}</h5>
+{% endblock page_header %}
+{% block content %}
+{% if not upcoming_appointment and not appointments %}
+<h5>{% trans "No appointments for this day"%}</h5>
+{% endif %}
+{% if upcoming_appointment %}
+<h2>Upcoming visit:</h2>
+<div class="container p-4 my-4 bg-light text-black border">
+    <h3><a href="{% url 'app:appointment' upcoming_appointment.id%}">Time of visit: {{upcoming_appointment.start_time}}</a></h3>
+    <h4><a class='text-dark' href="">Pet: {{upcoming_appointment.animal}}</a></h4>
+    <h5>Service: {{upcoming_appointment.service}}</h5>
+    <p>Additional information:</p>
+    <p>{{upcoming_appointment.information}}</p>
+    <a href="{% url 'app:edit_appointment' upcoming_appointment.id%}">Edit appointment</a>
+</div>  
+{% endif %}
+<div class="list-group">
+    {% for appointment in appointments%}
+    <a class="list-group-item list-group-item-action list-group-item-success"
+        href="{% url 'app:appointment' appointment.id%}">{{appointment.start_time}} - {{appointment.service}} - {{appointment.animal}}</a>
+    {%empty%}
+    <h6>No more appointments for this day</h6>
+    {%endfor%}
+</div>   
+{% endblock content %}

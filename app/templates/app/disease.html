@@ -1,10 +1,21 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
+{% load user_tags %}
 {% block page_header %}
+{% if request.user|has_group:"Admin" %}
+<h2><a class="text-dark" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}}</a></h2>
+{% endif %}
+{% if request.user|has_group:"Doctors" %}
+<h2>{{client.first_name}} {{client.last_name}}</h2>
+{% endif %}
 <h2>{{animal}}</h2>
 <p>{% trans "Date of birth:"%} {{animal.birth_date}}</p>
 {% endblock page_header %}
 {% block content %}
+{% if request.user|has_group:"Doctors" %}
+<div class="list-group">
+<a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' animal.id %}">{% trans "Add new disease"%}</a>
+{% endif %}
 {% if not actual_diseases and  not past_diseases%}
 {% trans "No diseases"%}
 {% endif %}
@@ -22,4 +33,16 @@
     {%endfor%}
   {% endif%}
   </div>
+  </div>
+  <br></br>
+  {% if appointments%}
+  <h5>{% trans "Appointments"%}:</h5>
+  {% endif%}
+  {% for appointment in appointments %}
+  <a class="list-group-item list-group-item-action list-group-item-success"
+   href="{% url 'app:appointment' appointment.id%}">{{appointment.date}} {{appointment.doctor}}</a>
+  {% endfor %}
+{% if request.user|has_group:"Admin" %}
+  <a class="list-group-item list-group-item-action list-group-item-danger" href="{% url 'app:pet_delete' animal.id %}">{% trans "Delete pet"%}</a>
+{% endif %}
 {% endblock content %}

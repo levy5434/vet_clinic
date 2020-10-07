@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Appointments to reschedule" %}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="list-group">
+    {% for appointment in appointments%}
+        <a href="{% url 'app:appointment' appointment.id %}" class="list-group-item list-group-item-action list-group-item-danger">
+            {{appointment.client.first_name}} {{appointment.client.last_name}} -
+            {{appointment.date}} - {{appointment.service}}- {{appointment.doctor}}</a>
+        <p></p>
+    {% empty %}
+        <h3>{% trans "No appointments to reschedule." %}</h3>
+    {%endfor%}
+</div>
+{% endblock content%}

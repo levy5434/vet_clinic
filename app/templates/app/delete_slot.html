@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2><a class="text-dark" href="{% url 'app:manage_slots' doctor.id 0%}">{{slot}}</a></h2>
+{% endblock page_header %}
+{%  block content%}
+<div class="container p-3 my-3 border">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>{% trans "Do you want to delete"%}</h2>
+        <h2>{{slot}} {% trans "from database?"%}</h2>
+        <button type="submit" class="btn btn-danger">{% trans "Yes"%}</button>
+        <a class="btn btn-secondary" href="{% url 'app:manage_slots' doctor.id 0%}">{% trans "No"%}</a>
+    </form>
+</div>
+{% endblock content %}

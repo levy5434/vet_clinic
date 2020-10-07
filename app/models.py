@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils.translation import gettext as _,gettext_lazy as _lazy
+#from user.models import Doctor,Service,Slot
+
 class Animal(models.Model):
     name = models.CharField(verbose_name=_lazy('name'),max_length=20)
     specie = models.CharField(verbose_name=_lazy('specie'),max_length=20)
@@ -36,3 +38,17 @@ class Medicine(models.Model):
         verbose_name_plural = 'Medicines'
     def __str__(self):
         return f"{self.name}"
+
+class Appointment(models.Model):
+    client = models.ForeignKey(User,verbose_name=_lazy('client'), default=None, on_delete=models.CASCADE)
+    animal = models.ForeignKey(Animal,verbose_name=_lazy('animal'), on_delete=models.CASCADE,blank=True,null=True)
+    slot = models.ForeignKey('user.Slot',verbose_name=_lazy('slot'), null=True, on_delete=models.SET_NULL)
+    service = models.ForeignKey('user.Service',verbose_name=_lazy('service'), null=True, on_delete=models.SET_NULL)
+    doctor = models.ForeignKey('user.Doctor', null=True, on_delete=models.SET_NULL)
+    date = models.DateField(verbose_name=_lazy('date'),null=True)
+    start_time = models.TimeField(verbose_name=_lazy('start time'),null=True)
+    information = models.TextField(verbose_name=_lazy('information'),null=True,blank=True)
+    class Meta:
+        verbose_name_plural = 'Appointments'
+    def __str__(self):
+        return f"{self.animal} - {self.service} - {self.doctor}"

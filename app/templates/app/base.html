@@ -6,13 +6,15 @@
     <title>E-Clinic</title>
     {% load bootstrap4 %}
     {% load i18n %}
+    {% load user_tags %}
     {% load static %}
     {% bootstrap_css%}
     {% bootstrap_javascript jquery="full"%}
-    <style type='text/css'>
+    <style>
     .asteriskField{
       display:none;
     }
+    body { background: #66b266 ; } 
     </style>
   </head>
   <body>
@@ -25,15 +27,22 @@
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'app:animals'%}">{% trans "My pets" %}</a></li>
-            {% if request.user.is_active and request.user.is_staff %}
+          {% if request.user.is_active and request.user.is_staff %}
+            {% if request.user|has_group:"Doctors" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'app:my_schedule' 0%}">{% trans "My schedule" %}</a></li>
+            {% endif %}
+            {% if request.user|has_group:"Admin" %}
             <li class="nav-item"><a class="nav-link" href="{% url 'app:browse_clients' %}">{% trans "Browse Clients" %}</a></li>
             {% endif %}
+          {% else %}
+          {% if user.is_authenticated%}
+          <li class="nav-item"><a class="nav-link" href="{% url 'app:animals'%}">{% trans "My pets" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'app:my_appointments'%}">{% trans "My appointments" %}</a></li>
+          {% endif %}
+          {%endif%}
+          <li class="nav-item"><a class="nav-link" href="{% url 'app:doctors'%}">{% trans "Our doctors" %}</a></li>
         </ul>
-        {% endif %}
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
             <li class="nav-item">
@@ -53,18 +62,14 @@
       </div>
     </nav>
     <main class="container">
+      <div class="container p-4 my-4 bg-light text-black border rounded position-relative">
       <div class="pb-2 mb-2 border-bottom">
         {% block page_header %}{% endblock page_header %}
       </div>
       <div>
         {% block content %}{% endblock content %}
       </div>
+    </div>
     </main>
-    <section id="cookie-warn">
-    <h6><strong>{% trans "Warning!"%}</strong>{% trans "This site uses cookies.By staying on the site you agree to save them in your browser."%}
-      <a href="javascript:void(0);" id="close-cookie-warn">{% trans "Close" %}</a></h6>
-    </section>
-  <link rel="stylesheet" href="{% static 'cookies.css' %}">
-  <script src="{% static 'cookies.js' %}"></script>
   </body>
 </html>

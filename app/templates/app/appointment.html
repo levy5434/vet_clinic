@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Appointment" %}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-4 my-4 bg-light text-black border">
+    <h3>Date of visit: {{appointment.date}} {{appointment.start_time}}</h3>
+    <h4><a class='text-dark' href="{% url 'app:disease' appointment.animal.id %}">Pet: {{appointment.animal}}</a></h4>
+    <h5>Service: {{appointment.service}}</h5>
+    <h5>Doctor: {{appointment.doctor}}</h5>
+    <p>Additional information: {{appointment.information}}</p>
+    {% if delete %}
+    <a class="btn btn-danger float-right" href="{% url 'app:delete_appointment' appointment.id%}">{% trans "Delete appointment"%}</a>
+    {% endif %}
+</div>  
+{% endblock content%}
