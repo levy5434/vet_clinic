@@ -1,7 +1,7 @@
 {% extends "app/base.html" %}
 {% load i18n %}
 {% block page_header %}
-<h2><a class="text-dark" href="{% url 'app:pet_disease' disease.id %}">{{disease.name}}</a></h2>
+<h2><a class="text-dark" href="{% url 'app:check_disease' disease.id %}">{{disease.name}}</a></h2>
 {% endblock page_header %}
 {%  block content%}
 <div class="container p-3 my-3 border">
@@ -9,7 +9,7 @@
         {% csrf_token %}
         <h1>{% trans "Do you want to delete"%} {{medicine.name}} {% trans "from"%} {{disease.animal}}</h1>
         <button type="submit" class="btn btn-danger">{% trans "Yes"%}</button>
-        <a class="btn btn-secondary" href="{% url 'app:pet_disease' disease.id %}">{% trans "No"%}</a>
+        <a class="btn btn-secondary" href="{% url 'app:check_disease' disease.id %}">{% trans "No"%}</a>
     </form>
 </div>
 {% endblock content %}

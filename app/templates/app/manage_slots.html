@@ -3,44 +3,50 @@
 {% block page_header %}
 {% load user_tags%}
 <h2>{% trans "Manage slots"%}</h2>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<style>
+@media screen and (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+}
+</style>
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3 bg-light text-black border">
-    <div class="row">
-      <div class="col-3">
-        <img src= "{{doctor.image.url}}" class="img-fluid" >
-        <h5>Name: {{doctor}}</h5>
-        <h5>Speciality: {{doctor.speciality}}</h5>
-      </div>
       <div class="col justify-content-md-center">
+        <h5>{% trans "Doctor"%}: {{doctor}} - {{doctor.speciality}}</h5>
+        <div class="col d-flex justify-content-center" style="padding: 0;"><h5>{% trans "Week"%}: {{first.day}}-{{first|date:"n"}} – {{last|date:"SHORT_DATE_FORMAT"}}</h5></div>
         <div class="row">
           {% if week != 0 %}
-          <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
-            href="{% url 'app:manage_slots' doctor.id p_week %}">Previous week</a></div>
-          {%else%}
-          <div class = 'col'></div>
+          <div class ="col align-self-start p-3"><a class="btn btn-success float-left"
+            href="{% url 'app:manage_slots' doctor.id p_week %}">{% trans "Previous week"%}</a></div>
           {% endif %}
-          <div class="col-6"><h5>Week: {{first.day}} {{first|date:"M"}} - {{last}}</h5></div>
-          <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
-              href="{% url 'app:manage_slots' doctor.id n_week %}">Next week</a></div>
+          <div class ="col align-self-end p-3"><a class="btn btn-success float-right"
+              href="{% url 'app:manage_slots' doctor.id n_week %}">{% trans "Next week"%}</a></div>
         </div>
         <br>
         {% for slot in slots%}
           <div class="list-group-item list-group-item-light"><p>{{slot.date|date:'l'}} {{slot.date|date:'j'}} {{slot.date|date:'M'}}:
             {% check_appointments slot.id as checked%}
             {% if checked %}
-            <a href="{% url 'app:slot' slot.id%}" class="text-primary">Go to slot</a>
+            <a href="{% url 'app:slot' slot.id%}" class="text-primary">{% trans "Go to slot"%}</a>
             {% else %}
-            No appointments for this day
+            {% trans "No appointments for this day"%}
             {% endif %}
             <a class='text-danger float-right' href="{% url 'app:delete_slot' slot.id %}">{% trans "Delete slot"%}</a></p>
           </div>
       {% empty %}
           <h5>{% trans "No slots for this week"%}</h5>
       {%endfor%}
+      <br>
+      <a class="list-group-item list-group-item-action list-group-item-success"
+      href="{% url 'app:add_slot' doctor.id %}">{% trans "Add slot"%}</a>
     </div>
-  </div>
-  <a class="list-group-item list-group-item-action list-group-item-success"
-            href="{% url 'app:add_slot' doctor.id %}">{% trans "Add slot"%}</a> 
 </div>
 {% endblock content%}

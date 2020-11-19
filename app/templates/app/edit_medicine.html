@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
-<h2><a class="text-dark" href="{% url 'app:pet_disease' disease.id %}">{{medicine}}</a></h2>
+<h2><a class="text-dark" href="{% url 'app:check_disease' disease.id %}">{{medicine}}</a></h2>
 {% endblock page_header %}
 {%  block content%}
 <h4>{% trans "Edit medicine:"%}</h4>

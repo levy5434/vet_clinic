@@ -10,16 +10,11 @@
     {% load static %}
     {% bootstrap_css%}
     {% bootstrap_javascript jquery="full"%}
-    <style>
-    .asteriskField{
-      display:none;
-    }
-    body { background: #66b266 ; } 
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+    <nav class="navbar navbar-custom navbar-expand-md navbar-light  mb-4 border">
       <a class="navbar-brand" href="{% url 'app:index'%}">
           E-Clinic</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -27,10 +22,10 @@
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" id="links">
           {% if request.user.is_active and request.user.is_staff %}
             {% if request.user|has_group:"Doctors" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'app:my_schedule' 0%}">{% trans "My schedule" %}</a></li>
+            <li class="nav-item" ><a class="nav-link"  href="{% url 'app:my_schedule' 0%}">{% trans "My schedule" %}</a></li>
             {% endif %}
             {% if request.user|has_group:"Admin" %}
             <li class="nav-item"><a class="nav-link" href="{% url 'app:browse_clients' %}">{% trans "Browse Clients" %}</a></li>
@@ -43,7 +38,7 @@
           {%endif%}
           <li class="nav-item"><a class="nav-link" href="{% url 'app:doctors'%}">{% trans "Our doctors" %}</a></li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" id="links">
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'user:profile' %}">{% trans "Hello,"%} {{ user.first_name }}.</a>
@@ -62,7 +57,7 @@
       </div>
     </nav>
     <main class="container">
-      <div class="container p-4 my-4 bg-light text-black border rounded position-relative">
+      <div class="container p-4 my-4  text-black border rounded position-relative">
       <div class="pb-2 mb-2 border-bottom">
         {% block page_header %}{% endblock page_header %}
       </div>

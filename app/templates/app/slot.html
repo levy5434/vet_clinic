@@ -2,30 +2,58 @@
 {% load i18n %}
 {% load user_tags %}
 {% block page_header %}
-<h3>{{slot.date}}</h3>
+<h3>{{slot.date|date:"SHORT_DATE_FORMAT"}}</h3>
 <h5>{% trans "Working hours"%}: {{slot.start_time}} - {{slot.end_time}}</h5>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 {% endblock page_header %}
 {% block content %}
 {% if not upcoming_appointment and not appointments %}
 <h5>{% trans "No appointments for this day"%}</h5>
+{% else %}
+<div class="container p-3  bg-light text-black ">
+    <div class="row">
+        <h5>{% trans "Upcoming visit:"%}</h5>
+    {% if upcoming_appointment %}
+        <div class="container list-group-item-action list-group-item-success rounded position-relative">
+        <a href="{% url 'app:appointment' upcoming_appointment.id%}" class="stretched-link"></a>
+            <h6>{% trans "Time of visit"%}: {{upcoming_appointment.start_time}}</a></h6>
+            {% if upcoming_appointment.animal%}
+            <h6>{% trans "Pet"%}: {{upcoming_appointment.animal}}</h6>
+            {% endif %}
+            <h6>{% trans "Service"%}: {{upcoming_appointment.service}}</h6>
+        </div>
+    </div>
+    <br>
+    {% endif %}
+    <h6>{% trans "Todays schedule"%}:</h6> 
+        {% for time1 in times1%}
+        <div class="row">
+            <div class="col-3" style="max-width:100px;">
+                {% for i in time1.1|times %}
+                <div class="row list-group-item list-group-item-light py-1">{{times2.pop}}</div>
+                {% endfor %}
+            </div>
+            {% if time1.0%}
+                {% if time1.0.service.admin_only == True%}
+                    <div class="col list-group-item-success d-flex align-items-center justify-content-center border border-success rounded position-relative">
+                        <a class="stretched-link text-decoration-none" href="{% url 'app:appointment' time1.0.id %}">{{time1.0.service}}</a></div>
+                {% else%}
+                <div class="col list-group-item-action list-group-item-primary d-flex align-items-center justify-content-center position-relative border border-primary rounded">
+                    <a class="stretched-link text-decoration-none" href="{% url 'app:appointment' time1.0.id %}">
+                        {%if time1.0.animal%}
+                        {{time1.0.animal}} - 
+                        {%endif%}
+                        {{time1.0.service}}</a></div>
+                {% endif%}
+            {%else%}
+            <div class="col-lg-8 col-md-8 col-sm-8 list-group-item-light bg-light d-flex d-flex align-items-center rounded"></div>
+            {% endif%}
+        </div>
+        {% endfor%}
+</div>
 {% endif %}
-{% if upcoming_appointment %}
-<h2>Upcoming visit:</h2>
-<div class="container p-4 my-4 bg-light text-black border">
-    <h3><a href="{% url 'app:appointment' upcoming_appointment.id%}">Time of visit: {{upcoming_appointment.start_time}}</a></h3>
-    <h4><a class='text-dark' href="">Pet: {{upcoming_appointment.animal}}</a></h4>
-    <h5>Service: {{upcoming_appointment.service}}</h5>
-    <p>Additional information:</p>
-    <p>{{upcoming_appointment.information}}</p>
-    <a href="{% url 'app:edit_appointment' upcoming_appointment.id%}">Edit appointment</a>
-</div>  
-{% endif %}
-<div class="list-group">
-    {% for appointment in appointments%}
-    <a class="list-group-item list-group-item-action list-group-item-success"
-        href="{% url 'app:appointment' appointment.id%}">{{appointment.start_time}} - {{appointment.service}} - {{appointment.animal}}</a>
-    {%empty%}
-    <h6>No more appointments for this day</h6>
-    {%endfor%}
-</div>   
 {% endblock content %}

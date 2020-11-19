@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-11 23:33+0200\n"
+"POT-Creation-Date: 2020-11-17 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,113 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%"
 "100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%"
 "10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: .\app\templates\app\add_client_appointment.html:4
+#: .\app\templates\app\appointment.html:75
+msgid "Add client to appointment"
+msgstr "Dodaj klienta do wizyty"
+
+#: .\app\templates\app\add_client_appointment.html:8
+#: .\app\templates\app\add_client_appointment_f.html:15
+#: .\app\templates\app\appointment.html:6
+#: .\app\templates\app\appointment.html:114 .\app\templates\app\client.html:37
+#: .\app\templates\app\disease.html:40 .\app\templates\app\reschedule.html:13
+#: .\app\templates\app\reschedule_confirm.html:17
+#: .\app\templates\app\reschedule_confirm.html:26
+#, fuzzy
+#| msgid "Date of birth"
+msgid "Date of visit"
+msgstr "Data urodzenia"
+
+#: .\app\templates\app\add_client_appointment.html:9
+#: .\app\templates\app\add_client_appointment_f.html:16
+#: .\app\templates\app\appointment.html:27
+#: .\app\templates\app\appointment.html:115 .\app\templates\app\client.html:38
+#: .\app\templates\app\disease.html:41
+#: .\app\templates\app\make_appointment_f.html:11
+#: .\app\templates\app\my_appointments.html:19
+#: .\app\templates\app\reschedule.html:14
+#: .\app\templates\app\reschedule_confirm.html:18
+#: .\app\templates\app\reschedule_confirm.html:27
+#: .\app\templates\app\slot.html:27
+msgid "Service"
+msgstr "Usługa"
+
+#: .\app\templates\app\add_client_appointment.html:10
+#: .\app\templates\app\add_client_appointment_f.html:17
+#: .\app\templates\app\appointment.html:28
+#: .\app\templates\app\appointment.html:116 .\app\templates\app\client.html:39
+#: .\app\templates\app\disease.html:42 .\app\templates\app\doctor.html:5
+#: .\app\templates\app\make_appointment_f.html:12
+#: .\app\templates\app\manage_slots.html:23
+#: .\app\templates\app\my_appointments.html:20
+#: .\app\templates\app\reschedule.html:15
+#: .\app\templates\app\reschedule_confirm.html:19
+#: .\app\templates\app\reschedule_confirm.html:28
+msgid "Doctor"
+msgstr "Doktor"
+
+#: .\app\templates\app\add_client_appointment.html:11
+#: .\app\templates\app\add_client_appointment_f.html:18
+#: .\app\templates\app\appointment.html:29
+#: .\app\templates\app\appointment.html:117 .\app\templates\app\client.html:40
+#: .\app\templates\app\disease.html:43
+#: .\app\templates\app\my_appointments.html:22
+#: .\app\templates\app\reschedule.html:16
+#: .\app\templates\app\reschedule_confirm.html:20
+#: .\app\templates\app\reschedule_confirm.html:29
+msgid "Additional information"
+msgstr "Dodatkowe informacje"
+
+#: .\app\templates\app\add_client_appointment.html:13
+#: .\app\templates\app\browse_clients.html:8
+msgid "Search by last name"
+msgstr "Szukaj według nazwiska"
+
+#: .\app\templates\app\add_client_appointment.html:19
+#: .\app\templates\app\browse_clients.html:15
+msgid "No patients"
+msgstr "Brak pacjentów"
+
+#: .\app\templates\app\add_client_appointment_f.html:4
+msgid "Add client to the appointment"
+msgstr "Dodaj klienta do wizyty"
+
+#: .\app\templates\app\add_client_appointment_f.html:11
+#, fuzzy
+#| msgid "Do you want to delete"
+msgid "Do you want to add this client"
+msgstr "Czy na pewno chcesz usunąc"
+
+#: .\app\templates\app\add_client_appointment_f.html:14
+#: .\app\templates\app\reschedule_confirm.html:23
+msgid "To"
+msgstr "Do"
+
+#: .\app\templates\app\add_client_appointment_f.html:19
+msgid "This action can not  be reversed!"
+msgstr "Nie można cofnąć tej czynności"
+
+#: .\app\templates\app\add_client_appointment_f.html:20
+#: .\app\templates\app\delete_appointment.html:20
+#: .\app\templates\app\delete_disease.html:11
+#: .\app\templates\app\delete_medicine.html:11
+#: .\app\templates\app\delete_pet.html:11
+#: .\app\templates\app\delete_slot.html:12
+#: .\app\templates\app\reschedule_confirm.html:32
+msgid "Yes"
+msgstr "Tak"
+
+#: .\app\templates\app\add_client_appointment_f.html:21
+#: .\app\templates\app\delete_appointment.html:22
+#: .\app\templates\app\delete_appointment.html:24
+#: .\app\templates\app\delete_disease.html:12
+#: .\app\templates\app\delete_medicine.html:12
+#: .\app\templates\app\delete_pet.html:12
+#: .\app\templates\app\delete_slot.html:13
+#: .\app\templates\app\reschedule_confirm.html:33
+msgid "No"
+msgstr "Nie"
 
 #: .\app\templates\app\add_disease.html:5
 msgid "Add new disease to"
@@ -36,7 +143,7 @@ msgstr "Dodaj nowy lek"
 msgid "Add medicine"
 msgstr "Dodaj lek"
 
-#: .\app\templates\app\add_pet.html:5 .\app\templates\app\client.html:11
+#: .\app\templates\app\add_pet.html:5 .\app\templates\app\client.html:13
 msgid "Add new pet"
 msgstr "Dodaj nowe zwierzę"
 
@@ -44,7 +151,33 @@ msgstr "Dodaj nowe zwierzę"
 msgid "Add pet"
 msgstr "Dodaj zwierzę"
 
-#: .\app\templates\app\animals.html:4 .\app\templates\app\base.html:31
+#: .\app\templates\app\add_slot.html:5
+#, fuzzy
+#| msgid "Add pet"
+msgid "Add slots"
+msgstr "Dodaj zwierzę"
+
+#: .\app\templates\app\add_slot.html:17
+#, fuzzy
+#| msgid "Date of birth"
+msgid "Days of visit"
+msgstr "Data urodzenia"
+
+#: .\app\templates\app\add_slot.html:22 .\app\templates\app\doctor.html:37
+#: .\app\templates\app\reschedule.html:56
+#, fuzzy
+#| msgid "My pets"
+msgid "No slots"
+msgstr "Brak zwierząt"
+
+#: .\app\templates\app\add_slot.html:29
+#: .\app\templates\app\manage_slots.html:49
+#, fuzzy
+#| msgid "Add pet"
+msgid "Add slot"
+msgstr "Dodaj zwierzę"
+
+#: .\app\templates\app\animals.html:4 .\app\templates\app\base.html:35
 msgid "My pets"
 msgstr "Moje zwierzęta"
 
@@ -52,137 +185,221 @@ msgstr "Moje zwierzęta"
 msgid "No pets yet."
 msgstr "Brak zwierząt"
 
-#: .\app\templates\app\base.html:33
+#: .\app\templates\app\appointment.html:8
+msgid "Needs to be rescheduled!"
+msgstr "Musi zostać przełożona"
+
+#: .\app\templates\app\appointment.html:33
+#: .\app\templates\app\reschedule.html:20
+#, fuzzy
+#| msgid "Clients"
+msgid "Client data"
+msgstr "Przeglądaj klientów"
+
+#: .\app\templates\app\appointment.html:34 .\app\templates\app\client.html:7
+#: .\app\templates\app\reschedule.html:21
+msgid "Email:"
+msgstr "Email:"
+
+#: .\app\templates\app\appointment.html:35 .\app\templates\app\client.html:8
+#: .\app\templates\app\reschedule.html:22
+#: .\user\templates\registration\profile.html:11
+msgid "City:"
+msgstr "Miasto:"
+
+#: .\app\templates\app\appointment.html:36 .\app\templates\app\client.html:9
+#: .\app\templates\app\reschedule.html:23
+#: .\user\templates\registration\profile.html:12
+msgid "Phone number:"
+msgstr "Numer telefonu:"
+
+#: .\app\templates\app\appointment.html:44
+#: .\app\templates\app\my_appointments.html:24
+#, fuzzy
+#| msgid "Delete pet"
+msgid "Delete appointment"
+msgstr "Usuń zwierzę"
+
+#: .\app\templates\app\appointment.html:72
+#: .\app\templates\app\edit_appointment.html:6
+#: .\app\templates\app\edit_appointment.html:28
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit appointment"
+msgstr "Edytuj profil"
+
+#: .\app\templates\app\appointment.html:86 .\app\templates\app\disease.html:13
+#: .\user\templates\registration\profile.html:10
+msgid "Date of birth:"
+msgstr "Data urodzenia:"
+
+#: .\app\templates\app\appointment.html:88 .\app\templates\app\disease.html:17
+msgid "Add new disease"
+msgstr "Dodaj nową chorobę"
+
+#: .\app\templates\app\appointment.html:91
+msgid "No diseases"
+msgstr "Brak zarejestrowanych chorób"
+
+#: .\app\templates\app\appointment.html:94
+msgid "Actual"
+msgstr "Aktualne"
+
+#: .\app\templates\app\appointment.html:101
+#: .\app\templates\app\disease.html:26
+msgid "Past diseases"
+msgstr "Przebyte choroby"
+
+#: .\app\templates\app\appointment.html:108
+#: .\app\templates\app\disease.html:34
+msgid "Appointments"
+msgstr "Wizyty"
+
+#: .\app\templates\app\appointments_to_reschedule.html:4
+msgid "Appointments to reschedule"
+msgstr "Wizyty do przełożenia"
+
+#: .\app\templates\app\appointments_to_reschedule.html:16
+msgid "No appointments to reschedule."
+msgstr "Brak wizyt do przełożenia"
+
+#: .\app\templates\app\base.html:28 .\app\templates\app\my_schedule.html:4
+msgid "My schedule"
+msgstr "Mój harmonogram"
+
+#: .\app\templates\app\base.html:31
 msgid "Browse Clients"
 msgstr "Przeglądaj klientów"
 
-#: .\app\templates\app\base.html:40
+#: .\app\templates\app\base.html:36 .\app\templates\app\my_appointments.html:5
+#, fuzzy
+#| msgid "My pets"
+msgid "My appointments"
+msgstr "Moje zwierzęta"
+
+#: .\app\templates\app\base.html:39 .\app\templates\app\doctors.html:5
+msgid "Our doctors"
+msgstr "Nasi doktorzy"
+
+#: .\app\templates\app\base.html:44
 msgid "Hello,"
 msgstr "Witaj,"
 
-#: .\app\templates\app\base.html:43
+#: .\app\templates\app\base.html:47
 msgid "Log out"
 msgstr "Wyloguj"
 
-#: .\app\templates\app\base.html:47
+#: .\app\templates\app\base.html:51
 #: .\user\templates\registration\register.html:47
 msgid "Register"
 msgstr "Zarejestruj"
 
-#: .\app\templates\app\base.html:50
+#: .\app\templates\app\base.html:54
 #: .\user\templates\registration\login.html:16
 msgid "Log in"
 msgstr "Zaloguj"
-
-#: .\app\templates\app\base.html:64
-msgid "Warning!"
-msgstr "Uwaga"
-
-#: .\app\templates\app\base.html:64
-msgid ""
-"This site uses cookies.By staying on the site you agree to save them in your "
-"browser."
-msgstr ""
-"Niniejsza strona wykorzystuje pliki cookies. Pozostając na stronie godzisz "
-"się na ich zapisywanie w Twojej przeglądarce."
-
-#: .\app\templates\app\base.html:65
-msgid "Close"
-msgstr "Zamknij"
 
 #: .\app\templates\app\browse_clients.html:4
 msgid "Clients"
 msgstr "Przeglądaj klientów"
 
-#: .\app\templates\app\browse_clients.html:8
-msgid "Search by last name"
-msgstr "Szukaj według nazwiska"
-
-#: .\app\templates\app\browse_clients.html:15
-msgid "No patients"
-msgstr "Brak pacjentów"
-
-#: .\app\templates\app\check_disease.html:9
-#: .\app\templates\app\pet_disease.html:9
+#: .\app\templates\app\check_disease.html:15
+#: .\app\templates\app\check_disease.html:41
 msgid "Recommendations:"
 msgstr "Zalecenia:"
 
-#: .\app\templates\app\check_disease.html:11
-#: .\app\templates\app\check_disease.html:26
-#: .\app\templates\app\pet_disease.html:11
-#: .\app\templates\app\pet_disease.html:29
+#: .\app\templates\app\check_disease.html:17
+#: .\app\templates\app\check_disease.html:43
+#: .\app\templates\app\check_disease.html:74
+#: .\app\templates\app\check_disease.html:100
 msgid "Active"
 msgstr "Aktywna"
 
-#: .\app\templates\app\check_disease.html:13
-#: .\app\templates\app\check_disease.html:28
-#: .\app\templates\app\pet_disease.html:13
-#: .\app\templates\app\pet_disease.html:31
+#: .\app\templates\app\check_disease.html:19
+#: .\app\templates\app\check_disease.html:45
+#: .\app\templates\app\check_disease.html:76
+#: .\app\templates\app\check_disease.html:102
 msgid "Past"
 msgstr "Przebyta"
 
-#: .\app\templates\app\check_disease.html:15
-#: .\app\templates\app\pet_disease.html:15
+#: .\app\templates\app\check_disease.html:21
+#: .\app\templates\app\check_disease.html:47
 msgid "Register date:"
 msgstr "Data rejestracji:"
 
-#: .\app\templates\app\check_disease.html:17
-#: .\app\templates\app\pet_disease.html:17
+#: .\app\templates\app\check_disease.html:23
+#: .\app\templates\app\check_disease.html:49
 msgid "Cure date:"
 msgstr "Data wyleczenia:"
 
-#: .\app\templates\app\check_disease.html:20
-#: .\app\templates\app\pet_disease.html:22
+#: .\app\templates\app\check_disease.html:28
+#: .\app\templates\app\check_disease.html:85
+#, fuzzy
+#| msgid "Delete pet"
+msgid "Delete"
+msgstr "Usuń zwierzę"
+
+#: .\app\templates\app\check_disease.html:60
+msgid "Edit disease"
+msgstr "Edytuj chorobę"
+
+#: .\app\templates\app\check_disease.html:65
 msgid "Medicines"
 msgstr "Leki"
 
-#: .\app\templates\app\check_disease.html:23
-#: .\app\templates\app\pet_disease.html:26
+#: .\app\templates\app\check_disease.html:67
+msgid "Add new medicine"
+msgstr "Dodaj lek"
+
+#: .\app\templates\app\check_disease.html:71
+#: .\app\templates\app\check_disease.html:97
 msgid "Name:"
 msgstr "Nazwa:"
 
-#: .\app\templates\app\check_disease.html:24
-#: .\app\templates\app\pet_disease.html:27
+#: .\app\templates\app\check_disease.html:72
+#: .\app\templates\app\check_disease.html:98
 msgid "Dose:"
 msgstr "Dawka:"
 
-#: .\app\templates\app\check_disease.html:30
-#: .\app\templates\app\pet_disease.html:33
+#: .\app\templates\app\check_disease.html:78
+#: .\app\templates\app\check_disease.html:104
 msgid "Introduction date:"
 msgstr "Data wprowadzenia:"
 
-#: .\app\templates\app\check_disease.html:32
-msgid "End data:"
+#: .\app\templates\app\check_disease.html:80
+#: .\app\templates\app\check_disease.html:106
+#, fuzzy
+#| msgid "End data:"
+msgid "End date:"
 msgstr "Data zakończenia:"
 
-#: .\app\templates\app\check_disease.html:36
-#: .\app\templates\app\pet_disease.html:42
+#: .\app\templates\app\check_disease.html:117
+msgid "Edit"
+msgstr "Edytuj"
+
+#: .\app\templates\app\check_disease.html:124
 msgid "No medicines"
 msgstr "Brak leków"
 
-#: .\app\templates\app\client.html:5
-msgid "Email:"
-msgstr "Email:"
+#: .\app\templates\app\client.html:16
+msgid "Pets"
+msgstr "Zwierzęta"
 
-#: .\app\templates\app\client.html:6
-#: .\user\templates\registration\profile.html:11
-msgid "City:"
-msgstr "Miasto:"
-
-#: .\app\templates\app\client.html:7
-#: .\user\templates\registration\profile.html:12
-msgid "Phone number:"
-msgstr "Numer telefonu:"
-
-#: .\app\templates\app\client.html:17
+#: .\app\templates\app\client.html:21
 #, fuzzy
 #| msgid "My pets"
 msgid "No pets"
 msgstr "Brak zwierząt"
 
+#: .\app\templates\app\client.html:32
+msgid "Past appointments"
+msgstr "Poprzednie wizyty"
+
+#: .\app\templates\app\delete_appointment.html:10
 #: .\app\templates\app\delete_disease.html:10
 #: .\app\templates\app\delete_medicine.html:10
 #: .\app\templates\app\delete_pet.html:10
+#: .\app\templates\app\delete_slot.html:10
 msgid "Do you want to delete"
 msgstr "Czy na pewno chcesz usunąc"
 
@@ -191,42 +408,92 @@ msgstr "Czy na pewno chcesz usunąc"
 msgid "from"
 msgstr "z"
 
-#: .\app\templates\app\delete_disease.html:11
-#: .\app\templates\app\delete_medicine.html:11
-#: .\app\templates\app\delete_pet.html:11
-msgid "Yes"
-msgstr "Tak"
-
-#: .\app\templates\app\delete_disease.html:12
-#: .\app\templates\app\delete_medicine.html:12
-#: .\app\templates\app\delete_pet.html:12
-msgid "No"
-msgstr "Nie"
-
 #: .\app\templates\app\delete_pet.html:10
+#: .\app\templates\app\delete_slot.html:11
 msgid "from database?"
 msgstr "z bazy danych?"
 
-#: .\app\templates\app\disease.html:5 .\app\templates\app\pet.html:8
-#: .\user\templates\registration\profile.html:10
-msgid "Date of birth:"
-msgstr "Data urodzenia:"
-
-#: .\app\templates\app\disease.html:9
-msgid "No diseases"
-msgstr "Brak zarejestrowanych chorób"
-
-#: .\app\templates\app\disease.html:12 .\app\templates\app\pet.html:15
-msgid "Actual"
-msgstr "Aktualne"
-
-#: .\app\templates\app\disease.html:19 .\app\templates\app\pet.html:21
-msgid "Past diseases"
+#: .\app\templates\app\disease.html:20
+#, fuzzy
+#| msgid "Past diseases"
+msgid "Actual diseases"
 msgstr "Przebyte choroby"
+
+#: .\app\templates\app\disease.html:30
+#, fuzzy
+#| msgid "register date"
+msgid "No registered diseases"
+msgstr "Data rejestracji"
+
+#: .\app\templates\app\disease.html:48
+msgid "Delete pet"
+msgstr "Usuń zwierzę"
+
+#: .\app\templates\app\doctor.html:23 .\app\templates\app\reschedule.html:33
+msgid "Speciality"
+msgstr "Specjalność"
+
+#: .\app\templates\app\doctor.html:24
+msgid "Services"
+msgstr "Usługi"
+
+#: .\app\templates\app\doctor.html:28
+msgid "No services added yet."
+msgstr "Brak dodanych usług."
+
+#: .\app\templates\app\doctor.html:32
+#, fuzzy
+#| msgid "No patients"
+msgid "Takes patients:"
+msgstr "Brak pacjentów"
+
+#: .\app\templates\app\doctor.html:42 .\app\templates\app\index.html:14
+#: .\app\templates\app\make_appointment.html:4
+#: .\app\templates\app\make_appointment_d.html:4
+#: .\app\templates\app\make_appointment_f.html:6
+#: .\app\templates\app\make_appointment_f.html:32
+#: .\app\templates\app\make_appointment_s.html:5
+#: .\app\templates\app\make_appointment_s.html:81
+msgid "Make appointment"
+msgstr "Umów wizyte"
+
+#: .\app\templates\app\doctor.html:46 .\app\templates\app\manage_slots.html:5
+msgid "Manage slots"
+msgstr "Zarządzaj slotami"
+
+#: .\app\templates\app\doctors.html:22
+#: .\app\templates\app\make_appointment_d.html:33
+#, fuzzy
+#| msgid "No pets yet."
+msgid "No doctors added yet."
+msgstr "Brak zwierząt"
+
+#: .\app\templates\app\edit_appointment.html:10
+#: .\app\templates\app\slot.html:23
+msgid "Time of visit"
+msgstr "Godzina wizyty"
+
+#: .\app\templates\app\edit_appointment.html:12
+#, fuzzy
+#| msgid "owner"
+msgid "Owner"
+msgstr "Właściciel"
+
+#: .\app\templates\app\edit_appointment.html:13
+msgid "Phone number"
+msgstr "Numer telefonu:"
+
+#: .\app\templates\app\edit_appointment.html:16
+#: .\app\templates\app\reschedule.html:12
+#: .\app\templates\app\reschedule_confirm.html:16
+#: .\app\templates\app\reschedule_confirm.html:25
+#: .\app\templates\app\slot.html:25
+msgid "Pet"
+msgstr "Zwierzę"
 
 #: .\app\templates\app\edit_disease.html:8
 msgid "Edit disease:"
-msgstr "Edytuj chorobe:"
+msgstr "Edytuj chorobę:"
 
 #: .\app\templates\app\edit_disease.html:16
 #: .\app\templates\app\edit_medicine.html:14
@@ -238,47 +505,212 @@ msgstr "Zapisz zmiany"
 msgid "Edit medicine:"
 msgstr "Edytuj lek:"
 
-#: .\app\templates\app\index.html:5
+#: .\app\templates\app\index.html:4
 msgid "Welcome to the E-Clinic"
 msgstr "Witaj w E-Clinic"
 
-#: .\app\templates\app\index.html:6
+#: .\app\templates\app\index.html:5
 msgid "After logging in you will see the user panel."
 msgstr "Po zalogowaniu zobaczysz panel uzytkownika."
 
-#: .\app\templates\app\pet.html:10
-msgid "Add new disease"
-msgstr "Dodaj nową chorobę"
+#: .\app\templates\app\index.html:18
+msgid "Reschedule appointments"
+msgstr "Przełóż wizyty"
 
-#: .\app\templates\app\pet.html:12
-msgid "Delete pet"
+#: .\app\templates\app\make_appointment.html:15
+msgid "Choose vet service"
+msgstr "Wybierz usługę weterynaryjną"
+
+#: .\app\templates\app\make_appointment.html:21
+#: .\app\templates\app\make_appointment_d.html:16
+#: .\app\templates\app\make_appointment_s.html:22
+#, fuzzy
+#| msgid "No medicines"
+msgid "No services"
+msgstr "Brak leków"
+
+#: .\app\templates\app\make_appointment_f.html:13
+msgid "Date"
+msgstr "Data"
+
+#: .\app\templates\app\make_appointment_s.html:30
+#: .\app\templates\app\make_appointment_s.html:88
+#: .\app\templates\app\manage_slots.html:24
+#: .\app\templates\app\my_schedule.html:21
+msgid "Week"
+msgstr "Tydzień"
+
+#: .\app\templates\app\make_appointment_s.html:63
+msgid "More hours"
+msgstr "Więcej godzin"
+
+#: .\app\templates\app\make_appointment_s.html:119
+msgid "Close"
+msgstr "Zamknij"
+
+#: .\app\templates\app\manage_slots.html:28
+#: .\app\templates\app\my_schedule.html:34
+#: .\app\templates\app\reschedule.html:39
+msgid "Previous week"
+msgstr "Poprzedni tydzień"
+
+#: .\app\templates\app\manage_slots.html:31
+#: .\app\templates\app\my_schedule.html:40
+#: .\app\templates\app\reschedule.html:45
+msgid "Next week"
+msgstr "Nastepny tydzień"
+
+#: .\app\templates\app\manage_slots.html:38
+msgid "Go to slot"
+msgstr "Przejdź do slotu"
+
+#: .\app\templates\app\manage_slots.html:40 .\app\templates\app\slot.html:15
+msgid "No appointments for this day"
+msgstr "Brak spotkań na ten dzień"
+
+#: .\app\templates\app\manage_slots.html:42
+#, fuzzy
+#| msgid "Delete pet"
+msgid "Delete slot"
 msgstr "Usuń zwierzę"
 
-#: .\app\templates\app\pet_disease.html:19
-msgid "Edit disease"
-msgstr "Edytuj chorobę"
+#: .\app\templates\app\manage_slots.html:45
+msgid "No slots for this week"
+msgstr "Brak slotów w tym tygodniu"
 
-#: .\app\templates\app\pet_disease.html:20
-msgid "Delete disease"
-msgstr "Usuń chorobę"
+#: .\app\templates\app\my_appointments.html:38
+msgid "No appointments registered"
+msgstr "Brak zarejestrowanych wizyt"
 
-#: .\app\templates\app\pet_disease.html:23
-msgid "Add new medicine"
-msgstr "Dodaj lek"
+#: .\app\templates\app\my_schedule.html:11 .\app\templates\app\slot.html:6
+msgid "Working hours"
+msgstr "Godziny pracy"
 
-#: .\app\templates\app\pet_disease.html:35
+#: .\app\templates\app\my_schedule.html:16
+msgid "Today is"
+msgstr "Dzisiaj jest"
+
+#: .\app\templates\app\my_schedule.html:18
+msgid "Free day"
+msgstr "Dzień wolny"
+
+#: .\app\templates\app\my_schedule.html:27
+msgid "Free"
+msgstr "Wolne"
+
+#: .\app\templates\app\reschedule.html:5
+msgid "Reschedule appointment"
+msgstr "Przełóż wizyte"
+
+#: .\app\templates\app\reschedule.html:32
 #, fuzzy
-#| msgid "End data:"
-msgid "End date:"
-msgstr "Data zakończenia:"
+#| msgid "Name:"
+msgid "Name"
+msgstr "Nazwa:"
 
-#: .\app\templates\app\pet_disease.html:37
-msgid "Edit medicine"
-msgstr "Edytuj lek"
+#: .\app\templates\app\reschedule_confirm.html:10
+#, fuzzy
+#| msgid "Do you want to delete"
+msgid "Do you want to reschedule"
+msgstr "Czy na pewno chcesz usunąc"
 
-#: .\app\templates\app\pet_disease.html:38
-msgid "Delete medicine"
-msgstr "Usuń lek"
+#: .\app\templates\app\slot.html:19
+msgid "Upcoming visit:"
+msgstr "Nadchodząca wizyta:"
+
+#: .\app\templates\app\slot.html:32
+msgid "Todays schedule"
+msgstr "Dzisiejszy harmonogram"
+
+#: .\app\views.py:100 .\app\views.py:114 .\app\views.py:146 .\app\views.py:594
+msgid "This service is not available!"
+msgstr "Ta usługa jest niedostępna"
+
+#: .\app\views.py:182
+msgid "Success! Free time has been booked."
+msgstr "Sukces! Zarezerwowano czas wolny"
+
+#: .\app\views.py:197 .\app\views.py:210 .\app\views.py:224
+msgid "Success! Appointment has been booked."
+msgstr "Sukces! Wizyta została zarejestrowana."
+
+#: .\app\views.py:234
+msgid "You can not delete previous appointments"
+msgstr "Nie możesz usunąć poprzednich wizyt"
+
+#: .\app\views.py:239 .\app\views.py:244
+msgid "Appointment has been deleted"
+msgstr "Wizyta została odwołana"
+
+#: .\app\views.py:345
+msgid "Appointment has a client!"
+msgstr "Wizyta posiada klienta!"
+
+#: .\app\views.py:362
+msgid "Client has been added to the appointment"
+msgstr "Klient został dodany do wizyty"
+
+#: .\app\views.py:405
+msgid "Disease has been added"
+msgstr "Choroba została dodana"
+
+#: .\app\views.py:417
+msgid "Pet has been deleted"
+msgstr "Zwierzę zostało usunięte"
+
+#: .\app\views.py:443
+msgid "Slot have been deleted"
+msgstr "Slot został usunięty"
+
+#: .\app\views.py:486
+msgid "Medicine has been added"
+msgstr "Lek został dodany"
+
+#: .\app\views.py:509
+#, fuzzy
+#| msgid "end date"
+msgid "Wrong dates!"
+msgstr "Data zakończenia"
+
+#: .\app\views.py:514
+msgid "You can not add slot in this day of the week!"
+msgstr "Nie możesz dodac slota w ten dzień tygodnia!"
+
+#: .\app\views.py:523
+msgid "Slots have been added"
+msgstr "Sloty zostały dodane"
+
+#: .\app\views.py:540
+msgid "Medicine has been updated"
+msgstr "Lek został zaaktualizowany"
+
+#: .\app\views.py:551
+msgid "Medicine has been deleted"
+msgstr "Lek został usunięty"
+
+#: .\app\views.py:560
+msgid "Disease has been deleted"
+msgstr "Choroba została usunięta"
+
+#: .\app\views.py:603
+msgid "This hour is not available!"
+msgstr "Ta godzina nie jest dostępna!"
+
+#: .\app\views.py:611
+msgid "Appointment has been rescheduled"
+msgstr "Wizyta została przełożona"
+
+#: .\app\views.py:628
+msgid "Disease has been updated"
+msgstr "Choroba została zaaktualizowana"
+
+#: .\app\views.py:638
+msgid "You can not edit this appointment"
+msgstr "Nie możesz edytować tej wizyty"
+
+#: .\app\views.py:656
+msgid "Information has been updated"
+msgstr "Informacje zostały zaaktualizowane"
 
 #: .\user\templates\registration\change_password.html:5
 msgid "Change Password"
@@ -319,6 +751,28 @@ msgstr "Zmień hasło"
 msgid "Register Page"
 msgstr "Zarejestruj"
 
+msgid "Warning!"
+msgstr "Uwaga"
+
+msgid ""
+"This site uses cookies.By staying on the site you agree to save them in "
+"your browser."
+msgstr ""
+"Niniejsza strona wykorzystuje pliki cookies. Pozostając na stronie "
+"godzisz się na ich zapisywanie w Twojej przeglądarce."
+
+msgid "End data:"
+msgstr "Data zakończenia:"
+
+msgid "Delete disease"
+msgstr "Usuń chorobę"
+
+msgid "Edit medicine"
+msgstr "Edytuj lek"
+
+msgid "Delete medicine"
+msgstr "Usuń lek"
+
 msgid "Home"
 msgstr "Strona domowa"
 
@@ -337,12 +791,6 @@ msgstr "Gatunek"
 msgid "birth date"
 msgstr "Data urodzenia"
 
-msgid "register date"
-msgstr "Data rejestracji"
-
-msgid "owner"
-msgstr "Właściciel"
-
 msgid "animal"
 msgstr "Zwierzę"
 
@@ -355,9 +803,6 @@ msgstr "Data wyleczenia"
 msgid "introduction date"
 msgstr "Data wprowadzenia"
 
-msgid "end date"
-msgstr "Data zakończenia"
-
 msgid "phone_number"
 msgstr "numer telefonu"
 
@@ -366,9 +811,6 @@ msgstr "miasto"
 
 msgid "dose"
 msgstr "dawka"
-
-msgid "Phone number"
-msgstr "Numer telefonu:"
 
 msgid "First Name"
 msgstr "Imie"
@@ -396,9 +838,6 @@ msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
 msgstr "Numer telefonu musi być podany w formacie '+999999999'. Do 15 cyfer"
-
-msgid "Date of birth"
-msgstr "Data urodzenia"
 
 msgid "I am healthy!"
 msgstr "Zdrowy"

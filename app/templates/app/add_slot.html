@@ -3,13 +3,18 @@
 {% load crispy_forms_tags %}
 {% block page_header %}
 <h2>{% trans "Add slots"%}</h2>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3 bg-light text-black border">
     <div class = "offser-3 col-md-4">
         <h3>{{doctor}}</h3>
         <h4>{{doctor.speciality}}</h4>
-        <p>Days of visit:</p>
+        <p>{% trans "Days of visit"%}:</p>
         {% for slot in slots%}
         <div class="list-group-item list-group-item-light">{{slot.date|date:"l"}}
             {{slot.start_time}}-{{slot.end_time}}</div>

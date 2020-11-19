@@ -11,7 +11,7 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for service in services%}
-          <a class="dropdown-item"href="{% url 'app:make_appointment_d' service.id%}">{{service}} </a>
+          <a class="dropdown-item"href="{% url 'app:make_appointment_d' service.id%}">{{service}}</a>
         {% empty %}
           <h5>{% trans "No services"%}</h5>
         {%endfor%}

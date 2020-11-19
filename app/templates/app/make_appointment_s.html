@@ -24,38 +24,105 @@
       </div>
     </div>
   </div>
-<div class="container p-3 my-3 bg-light text-black border">
-    <div class="row">
-      <div class="col-3">
-        <img src= "{{selected_doctor.image.url}}" class="img-fluid" >
-        <h5>Name: {{selected_doctor}}</h5>
-        <h5>Speciality: {{selected_doctor.speciality}}</h5>
+<div class="container p-3 my-3 text-black border">
+      <div class="col justify-content-md-center" style="padding: 0;">
+          <h5>{{selected_doctor}} - {{my_service}}</h5>
+        <div class="col d-flex justify-content-center" style="padding: 0;"><h5>{% trans "Week"%}: {{first.day}}-{{first|date:"n"}} – {{last|date:"SHORT_DATE_FORMAT"}}</h5></div>
+        <div class = "row p-1">
+        {% for day in days%}
+          {% if day.0%}
+            <div class="col" style="padding: 2px;">
+              <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day.0|date:'D'}}</p>
+              <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day.0|date:'j/n'}}</p>
+              {%free_hours day.1.id my_service.id as times%}
+              {%for time in times|slice:":5"%}
+              <div class="col-sm-auto bg-light border rounded d-flex justify-content-center mb-1 position-relative">
+                <a class="stretched-link" style="text-decoration: none; color: black;" href="{% url 'app:make_appointment_f' my_service.id day.1.id time %}" >{{time}}</a>
+              </div>
+              {% empty%}
+              <div class="col-sm-auto">
+               <p class="d-flex justify-content-center ">-</p>
+              </div>
+              {% endfor%}
+            </div>
+          {% else%}
+            <div class="col">
+              <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day|date:'D'}}</p>
+              <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day|date:'j/n'}}</p>
+              <div class="col-sm-auto">
+                <p class="d-flex justify-content-center ">-</p>
+              </div>
+            </div>
+          {%endif%}
+        {% endfor %}
       </div>
-      <div class="col justify-content-md-center">
-        <div class="row">
-          {% if week != 0 %}
-          <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
-            href="{% url 'app:make_appointment_s' my_service.id selected_doctor.id p_week%}">Previous week </a></div>
-          {%else%}
-          <div class = 'col'></div>
-          {% endif %}
-          <div class="col-6"><h5>Week: {{first.day}} {{first|date:"M"}} - {{last}}</h5></div>
-          <div class = 'col'><a class="list-group-item list-group-item-action list-group-item-success"
-              href="{% url 'app:make_appointment_s' my_service.id selected_doctor.id n_week%}">Next week </a></div>
+      <br>
+      <div class="row">
+        {% if more_hours %}
+        <div class="col align-self-center d-flex justify-content-center">
+          <a class="btn bg-light border rounded" href="" data-toggle="modal" data-target="#Modal">{% trans "More hours"%}</a>
         </div>
-        <br>
-        {% for slot in slots%}
-          <div class="list-group-item list-group-item-light">{{slot.date|date:'l'}} {{slot.date|date:'j'}} {{slot.date|date:'M'}}:
-            {%free_hours slot.id my_service.id as times%}
-            {%for time in times%}
-            <a href="{% url 'app:make_appointment_f' my_service.id slot.id time %}">{{time}}</a>
-            {% endfor%}
+        {% endif %}
+      </div>
+      <div class="row">
+          <div class="col align-self-start p-3">
+            {% if week != 0 %}
+              <a class="btn btn-success float-left" href="{% url 'app:make_appointment_s' my_service.id selected_doctor.id p_week%}">Previous week </a>
+            {% endif %}
           </div>
-      {% empty %}
-          <h5>{% trans "No slots"%}</h5>
-      {%endfor%}
-    </div>
-  </div> 
+          <div class="col align-self-end p-3">
+            <a class="btn btn-success float-right" href="{% url 'app:make_appointment_s' my_service.id selected_doctor.id n_week%}">Next week </a>
+          </div>
+      </div>
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">{% trans "Make appointment"%}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="col justify-content-md-center">
+                  <div class="col d-flex justify-content-center"><h5>{% trans "Week"%}: {{first.day}}/{{first|date:"n"}} – {{last|date:"SHORT_DATE_FORMAT"}}</h5></div>
+                  <div class = "row">
+                  {% for day in days%}
+                    {% if day.0%}
+                      <div class="col">
+                        <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day.0|date:'D'}}</p>
+                        <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day.0|date:'j/n'}}</p>
+                        {%free_hours day.1.id my_service.id as times%}
+                        {%for time in times%}
+                        <div class="col bg-light border rounded d-flex justify-content-center mb-1 position-relative">
+                          <a class="stretched-link" style="text-decoration: none; color: black;" href="{% url 'app:make_appointment_f' my_service.id day.1.id time %}" >{{time}}</a>
+                        </div>
+                        {% empty%}
+                        <div class="col">
+                         <p class="d-flex justify-content-center">-</p>
+                        </div>
+                        {% endfor%}
+                      </div>
+                    {% else%}
+                      <div class="col">
+                        <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day|date:'D'}}</p>
+                        <p class="d-flex justify-content-center" style = "margin: 0px; padding: 0px;">{{day|date:'j/n'}}</p>
+                        <div class="col">
+                          <p class="d-flex justify-content-center">-</p>
+                        </div>
+                      </div>
+                    {%endif%}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close"%}</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+</div>
 </div>
 <div class="row justify-content-md-center">
         {% for doctor in doctors%}
@@ -70,5 +137,4 @@
             </div>
         {%endfor%}
 </div>
-
 {% endblock content %}

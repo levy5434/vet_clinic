@@ -1,0 +1,24 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Add client to the appointment"%}</h2>
+{% endblock page_header %}
+{%  block content%}
+<div class="container p-3 my-3 border">
+    <div class="container p-3 mx-3 bg-light text-black">
+    <form method="POST">
+        {% csrf_token %}
+            <h3>{% trans "Do you want to add this client"%}:</h3>
+            <h5>{{client.first_name}} {{client.last_name}}</h5>
+            <h5>{{client.profile.phone_number}}</h5>
+            <h5>{% trans "To"%}:</h3>
+            <h6>{% trans "Date of visit"%}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h6>
+            <h6>{% trans "Service"%}: {{appointment.service}}</h6>
+            <h6>{% trans "Doctor"%}: {{appointment.doctor}}</h6>
+            <p>{% trans "Additional information"%}: {{appointment.information|linebreaks}}</p>
+        <h3>{% trans "This action can not be reversed!"%}</h3>    
+        <button type="submit" class="btn btn-danger">{% trans "Yes"%}</button>
+        <a class="btn btn-secondary" href="{% url 'app:add_client_appointment' appointment.id %}">{% trans "No"%}</a>
+    </form>
+</div>
+{% endblock content %}

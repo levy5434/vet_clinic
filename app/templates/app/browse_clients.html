@@ -10,7 +10,7 @@
 <p></p>
 <div class="list-group">
     {% for client in clients%}
-    <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}}, {{client.profile.city}}</a>
+    <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}},&nbsp;&nbsp;&nbsp;&nbsp; {{client.profile.phone_number}}, {{client.profile.city}}</a>
     {% empty %}
         <h5>{% trans "No patients"%}</h5>
     {%endfor%}

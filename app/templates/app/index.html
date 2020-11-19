@@ -1,22 +1,20 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
 {% block page_header %}
-<div class="container p-3 my-3 border">
     <h1>{% trans "Welcome to the E-Clinic" %}</h1>
     <p>{% trans "After logging in you will see the user panel." %}</p>
-</div>
 {% endblock page_header %}
 {% block content %}
-<p>User</p>
-<p>andrzej:pwiprojekt1</p>
-<p></p>
-<p>Admin/Staff</p>
-<p>admin:Zaliczenie</p>
-<a class="list-group-item list-group-item-action list-group-item-success"
-      href="{% url 'app:make_appointment'%}">Make appointment </a>
-{% if no_slot_appointments%}
-    <br>
-    <a class="list-group-item list-group-item-action list-group-item-danger"
-        href="{% url 'app:appointments_to_reschedule'%}">Reschedule appointments</a>
-{%endif%}
+    <p>User</p>
+    <p>andrzej:pwiprojekt1</p>
+    <p></p>
+    <p>Admin/Staff</p>
+    <p>admin:Zaliczenie</p>
+    <a class="list-group-item list-group-item-action list-group-item-success"
+        href="{% url 'app:make_appointment'%}">{% trans "Make appointment" %} </a>
+    {% if no_slot_appointments%}
+        <br>
+        <a class="list-group-item list-group-item-action list-group-item-danger"
+            href="{% url 'app:appointments_to_reschedule'%}">{% trans "Reschedule appointments" %}</a>
+    {%endif%}
 {% endblock content %}

@@ -1,23 +1,45 @@
 {% extends "app/base.html" %}
 {% load i18n %}
 {% load user_tags %}
+{% load static %}
 {% block page_header %}
-<h2>{{client.first_name}} {{client.last_name}}</h2>
-<p>{% trans "Email:" %} {{client.email}}</p>
-<p>{% trans "City:" %} {{client.profile.city}}</p>
-<p>{% trans "Phone number:" %} {{client.profile.phone_number}}</p>
+    <h2>{{client.first_name}} {{client.last_name}}</h2>
+    <p>{% trans "Email:" %} {{client.email}}</p>
+    <p>{% trans "City:" %} {{client.profile.city}}</p>
+    <p>{% trans "Phone number:" %} {{client.profile.phone_number}}</p>
 {% endblock page_header %}
 {% block content %}
 {% if request.user|has_group:"Admin" %}
-<div class="list-group">
-<a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:add_pet' client.id %}">{% trans "Add new pet"%}</a>
-{%endif%}
-<br></br>
+    <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:add_pet' client.id %}">{% trans "Add new pet"%}</a>
+    {%endif%}
+    <br>
+    <h4>{% trans "Pets" %}:</h4>
     {% for animal in animals%}
         <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:disease' animal.id %}">{{animal}}</a>
         <p></p>
         {% empty %}
         <h5>{% trans "No pets"%}</h5>
     {%endfor%}
-</div>    
+    <br>
+    {% if appointments%}
+    <h4>{% trans "Upcoming appointments:</h4>
+    {% for appointment in appointments %}
+        <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:appointment' appointment.id %}">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment}}</a>
+    {%endfor%}
+    <br>
+    {%endif%}
+    {% if past_appointments%}
+    <h4>{% trans "Past appointments" %}:</h4>
+    {% for appointment in past_appointments %}
+        <a class="list-group-item list-group-item-action list-group-item-info"
+        href="javascript:showhide('{{appointment.id}}')">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment.animal}} - {{appointment.service}} - {{appointment.doctor}}</a>
+        <div class="container p-3 mx-3 bg-light text-black" id="{{appointment.id}}" style="display: none;" >
+            <h6>{% trans "Date of visit" %}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>
+            <h6>{% trans "Service" %}: {{appointment.service}}</h6>
+            <h6>{% trans "Doctor" %}: {{appointment.doctor}}</h6>
+            <p>{% trans "Additional information" %}: {{appointment.information}}</p>
+        </div>
+    {% endfor %}
+    {% endif %}
+<script type="text/javascript" src="{% static 'js/show.js' %}"></script>
 {% endblock content %}

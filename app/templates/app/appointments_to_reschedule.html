@@ -7,7 +7,9 @@
 <div class="list-group">
     {% for appointment in appointments%}
         <a href="{% url 'app:appointment' appointment.id %}" class="list-group-item list-group-item-action list-group-item-danger">
+            {% if appointment.client%}
             {{appointment.client.first_name}} {{appointment.client.last_name}} -
+            {% endif%}
             {{appointment.date}} - {{appointment.service}}- {{appointment.doctor}}</a>
         <p></p>
     {% empty %}

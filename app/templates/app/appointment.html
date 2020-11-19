@@ -1,17 +1,123 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
+{% load user_tags %}
+{% load static %}
 {% block page_header %}
-<h2>{% trans "Appointment" %}</h2>
+    <h2>{% trans "Date of visit"%}: {{appointment.start_time}} {{appointment.date|date:"SHORT_DATE_FORMAT"}} </h2>
+    {% if reschedule%}
+        <h6 style="color:red">{% trans "Needs to be rescheduled!"%}</h6>
+    {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 {% endblock page_header %}
 {% block content %}
-<div class="container p-4 my-4 bg-light text-black border">
-    <h3>Date of visit: {{appointment.date}} {{appointment.start_time}}</h3>
-    <h4><a class='text-dark' href="{% url 'app:disease' appointment.animal.id %}">Pet: {{appointment.animal}}</a></h4>
-    <h5>Service: {{appointment.service}}</h5>
-    <h5>Doctor: {{appointment.doctor}}</h5>
-    <p>Additional information: {{appointment.information}}</p>
-    {% if delete %}
-    <a class="btn btn-danger float-right" href="{% url 'app:delete_appointment' appointment.id%}">{% trans "Delete appointment"%}</a>
-    {% endif %}
-</div>  
+    <div class="container p-4  bg-light text-black border ">
+        <div class="row">
+            <div class="col">
+                {% if request.user|has_group:"Admin" %}
+                    {% if client%}
+                        <h5><a href="{% url 'app:client' client.id%}" class='text-dark'>{{client.first_name}} {{client.last_name}}</a></h5>
+                    {% endif %}
+                {%else%}
+                    <h5>{{appointment.client.first_name}} {{appointment.client.last_name}}</h5>
+                {% endif %}
+                <p>{% trans "Service"%}: {{appointment.service}}</p>
+                <p>{% trans "Doctor"%}: {{appointment.doctor}}</p>
+                <p>{% trans "Additional information"%}: {{appointment.information|linebreaks}}</p>
+            </div>
+            {% if request.user|has_group:"Admin" and client%}
+                <div class="col">
+                    <h5>{% trans "Client data"%}:</h5>
+                    <p>{% trans "Email:" %} {{client.email}}</p>
+                    <p>{% trans "City:" %} {{client.profile.city}}</p>
+                    <p>{% trans "Phone number:" %} {{client.profile.phone_number}}</p>
+                    <br>
+                </div>
+            {%endif%}
+        </div>
+
+        {% if delete%}
+        <button type="button" class="btn btn-danger float-right m-1" data-toggle="modal" data-target="#deleteModal">
+            {% trans "Delete appointment"%}
+        </button>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Do you want to delete the appointment</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    {% if appointment.client%}
+                    <h5>{{appointment.client.first_name}} {{appointment.client.last_name}}</h5>
+                    {% endif %}
+                    <p>Service: {{appointment.service}}</p>
+                    <p>Doctor: {{appointment.doctor}}</p>
+                    <p>Additional information: {{appointment.information|linebreaks}}</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-danger" href="{% url 'app:delete_appointment' appointment.id%}">Delete</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if request.user|has_group:"Doctors" and appointment.service.admin_only == False or request.user|has_group:"Admin"%}
+            <a class="btn btn-primary float-right m-1 " href="{% url 'app:edit_appointment' appointment.id%}">{% trans "Edit appointment"%}</a>
+        {% endif %}
+        {% if not appointment.service.admin_only and not client and request.user|has_group:"Admin"%}
+        <a class="btn btn-success float-right m-1 " href="{% url 'app:add_client_appointment' appointment.id%}">{% trans "Add client to appointment"%}</a> 
+    {% endif%}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    {% if appointment.animal%}
+    <div class="container p-3  bg-light text-black border ">
+        <h2>{{appointment.animal}}</h2>
+        <p>{% trans "Date of birth:"%} {{appointment.animal.birth_date|date:"SHORT_DATE_FORMAT"}}</p>
+        {% if request.user|has_group:"Doctors" %}
+            <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' appointment.animal.id %}">{% trans "Add new disease"%}</a>
+        {% endif %}
+        {% if not actual_diseases and  not past_diseases%}
+            <p>{% trans "No diseases"%}</p>
+        {% endif %}
+        {% if actual_diseases %}
+            <h5>{% trans "Actual"%}:</h5>
+        {% for disease in actual_diseases%}
+            <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+        {% endfor %}
+        <br>
+        {% endif %}
+        {% if past_diseases %}
+            <h5>{% trans "Past diseases"%}:</h5>
+            {% for disease in past_diseases%}
+                <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+            {%endfor%}
+            <br>
+        {% endif%}
+        {% if appointments%}
+            <h5>{% trans "Appointments"%}:</h5>
+        {% endif%}
+        {% for appointment in appointments %}
+            <a class="list-group-item list-group-item-action list-group-item-success"
+            href="javascript:showhide('{{appointment.id}}')">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment.service}} - {{appointment.doctor}}</a>
+            <div class="container p-3 mx-3 bg-light text-black" id="{{appointment.id}}" style="display: none;" >
+                <h6>{% trans "Date of visit"%}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>
+                <h6>{% trans "Service"%}: {{appointment.service}}</h6>
+                <h6>{% trans "Doctor"%}: {{appointment.doctor}}</h6>
+                <p>{% trans "Additional information"%}: {{appointment.information}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}  
+    <script type="text/javascript" src="{% static 'js/show.js' %}"></script>
 {% endblock content%}

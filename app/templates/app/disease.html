@@ -1,48 +1,52 @@
 {% extends 'app/base.html' %}
 {% load i18n %}
 {% load user_tags %}
+{% load static %}
 {% block page_header %}
-{% if request.user|has_group:"Admin" %}
-<h2><a class="text-dark" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}}</a></h2>
-{% endif %}
-{% if request.user|has_group:"Doctors" %}
-<h2>{{client.first_name}} {{client.last_name}}</h2>
-{% endif %}
-<h2>{{animal}}</h2>
-<p>{% trans "Date of birth:"%} {{animal.birth_date}}</p>
+  {% if request.user|has_group:"Admin" %}
+    <h2><a class="text-dark" href="{% url 'app:client' client.id%}">{{client.first_name}} {{client.last_name}}</a></h2>
+  {% endif %}
+  {% if request.user|has_group:"Doctors" %}
+    <h2>{{client.first_name}} {{client.last_name}}</h2>
+  {% endif %}
+  <h2>{{animal}}</h2>
+  <p>{% trans "Date of birth:"%} {{animal.birth_date|date:"SHORT_DATE_FORMAT"}}</p>
 {% endblock page_header %}
 {% block content %}
-{% if request.user|has_group:"Doctors" %}
-<div class="list-group">
-<a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' animal.id %}">{% trans "Add new disease"%}</a>
-{% endif %}
-{% if not actual_diseases and  not past_diseases%}
-{% trans "No diseases"%}
-{% endif %}
-    {% if actual_diseases %}
-    <h5>{% trans "Actual"%}</h5>
-    <div class="list-group">
-    {% for disease in actual_diseases%}
-      <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
-    {% endfor %}
+  {% if request.user|has_group:"Doctors" %}
+    <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' animal.id %}">{% trans "Add new disease"%}</a>
+    <br>
     {% endif %}
-  {% if past_diseases %}
-    <h5>{% trans "Past diseases"%}</h5>
-    {% for disease in past_diseases%}
-      <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
-    {%endfor%}
-  {% endif%}
-  </div>
-  </div>
-  <br></br>
-  {% if appointments%}
-  <h5>{% trans "Appointments"%}:</h5>
-  {% endif%}
-  {% for appointment in appointments %}
-  <a class="list-group-item list-group-item-action list-group-item-success"
-   href="{% url 'app:appointment' appointment.id%}">{{appointment.date}} {{appointment.doctor}}</a>
+  <h5>{% trans "Actual diseases"%}:</h5>
+  {% for disease in actual_diseases%}
+    <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+  {% empty%}
+    <p>No registered diseases</p>
   {% endfor %}
-{% if request.user|has_group:"Admin" %}
-  <a class="list-group-item list-group-item-action list-group-item-danger" href="{% url 'app:pet_delete' animal.id %}">{% trans "Delete pet"%}</a>
-{% endif %}
+  <h5>{% trans "Past diseases"%}:</h5>
+      {% for disease in past_diseases%}
+        <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+      {% empty%}
+        <p>{% trans "No registered diseases"%}</p>
+      {%endfor%}
+    {% if appointments%}
+    <br>
+    <h5>{% trans "Appointments"%}:</h5>
+    {% endif%}
+    {% for appointment in appointments %}
+    <a class="list-group-item list-group-item-action list-group-item-success"
+    href="javascript:showhide('{{appointment.id}}')">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment.service}} - {{appointment.doctor}}</a>
+    <div class="container p-3 mx-3 bg-light text-black" id="{{appointment.id}}" style="display: none;" >
+        <h6>{% trans "Date of visit"%}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>
+        <h6>{% trans "Service"%}: {{appointment.service}}</h6>
+        <h6>{% trans "Doctor"%}: {{appointment.doctor}}</h6>
+        <p>{% trans "Additional information"%}: {{appointment.information}}</p>
+    </div>
+  {% endfor %}
+  {% if request.user|has_group:"Admin" %}
+  <br>
+    <a class="list-group-item list-group-item-action list-group-item-danger" href="{% url 'app:pet_delete' animal.id %}">{% trans "Delete pet"%}</a>
+  {% endif %}
+  </div>
+  <script type="text/javascript" src="{% static 'js/show.js' %}"></script>
 {% endblock content %}

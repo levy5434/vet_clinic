@@ -1,0 +1,47 @@
+.asteriskField{
+      display:none;
+    }
+  p{
+    font-family: 'arial';
+    
+  }
+  h1{
+    font-family: 'arial';
+    
+  }
+  h2{
+    font-family: 'arial';
+    
+  }
+  h3{
+    font-family: 'arial';
+    
+  }
+  h4{
+    font-family: 'arial';
+    
+  }
+  h5{
+    font-family: 'arial';
+    
+  }
+  h6{
+    font-family: 'arial';
+    
+  }
+  a{
+    font-family :'arial';
+    
+  }
+  .navbar-custom { 
+          background-color: #08aa75; 
+      }
+  .navbar-custom .navbar-brand, 
+  .navbar-custom .navbar-text { 
+      font-family :'arial';
+      color:white; 
+  }
+  #links a{
+    font-family: 'arial';
+    color:white;
+  }

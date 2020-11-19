@@ -1,14 +1,28 @@
 {% extends "app/base.html" %}
 {% load i18n %}
+{% load user_tags %}
 {% block page_header %}
 {% endblock page_header %}
 {%  block content%}
 <div class="container p-3 my-3 border">
     <form method="POST">
         {% csrf_token %}
-        <h1>{% trans "Do you want to delete"%} {{appointment}}</h1>
+        <h1>{% trans "Do you want to delete"%}:</h1>
+        {% if appointment.client%}
+        <h5>{{appointment.client.first_name}} {{appointment.client.last_name}}</h5>
+        {% endif %}
+        {% if appointment.animal%}
+        <h6>Pet: {{appointment.animal}}</h6>
+        {% endif%}
+        <h6>Date of visit: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>
+        <h6>Service: {{appointment.service}}</h6>
+        <h6>Doctor: {{appointment.doctor}}</h6>
         <button type="submit" class="btn btn-danger">{% trans "Yes"%}</button>
+        {% if request.user|has_group:"Admin" %}
+        <a class="btn btn-secondary" href="{% url 'app:slot' appointment.slot.id%}">{% trans "No"%}</a>
+        {% else%}
         <a class="btn btn-secondary" href="{% url 'app:my_appointments' %}">{% trans "No"%}</a>
+        {% endif%}
     </form>
 </div>
 {% endblock content %}

@@ -3,41 +3,49 @@
 {% load user_tags %}
 {% block page_header %}
 <h2>{% trans "Doctor"%} {{doctor}}</h2>
+<style>
+.md-avatar.size-4 {
+  width: 320px;
+  height: 300px;
+}
+</style>
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3 bg-light text-black border">
     <div class="row">
-    <div class="w-25 p-3">
-        <img src= "{{doctor.image.url}}" class="img-fluid" >
-    </div>
-    <div class="col p-3">
-        <h5>Name: {{doctor}}</h5>
-        <h5>Speciality: {{doctor.speciality}}</h5>
-        <h6>{% trans "Services: "%}</h6>
-        {% for service in doctor.services.all %}
-            <p>{{service}}</p>
-        {% empty %}
-            <p>{% trans "No services added yet."%}</p>
-        {%endfor%}
-    </div>
-    <div class="col p-3">
-        <h6>{% trans "Takes patients:" %}</h6>
-        {% for slot in slots%}
-        <div class="list-group-item list-group-item-light">{{slot.date|date:"l"}}
-        {{slot.start_time}}-{{slot.end_time}}</div>
-        {% empty %}
-            <h5>{% trans "No slots"%}</h5>
-        {%endfor%}
-        <br>
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action list-group-item-success"
-            href="{% url 'app:make_appointment'%}">{% trans "Make appointment"%}</a></div>
-        {% if request.user|has_group:"Admin" %}
-        <br>
-            <a class="list-group-item list-group-item-action list-group-item-success"
-            href="{% url 'app:manage_slots' doctor.id 0%}">{% trans "Manage slots"%}</a>
-        {% endif %} 
-    </div>
+        <div class="col-auto p-3">
+            <div class="card border-0 shadow">
+                <img src="{{doctor.image.url}}" alt="Avatar" class="img-fluid md-avatar size-4">
+            </div>
+        </div>
+        <div class="col p-3">
+            <h5>{{doctor}}</h5>
+            <h5>{% trans "Speciality"%}: {{doctor.speciality}}</h5>
+            <h6>{% trans "Services"%}: </h6>
+            {% for service in services %}
+                <p>{{service}}</p>
+            {% empty %}
+                <p>{% trans "No services added yet."%}</p>
+            {%endfor%}
+        </div>
+        <div class="col p-3">
+            <h6>{% trans "Takes patients:" %}</h6>
+            {% for slot in slots%}
+            <div class="list-group-item list-group-item-light">{{slot.date|date:"l"}}
+            {{slot.start_time}}-{{slot.end_time}}</div>
+            {% empty %}
+                <h5>{% trans "No slots"%}</h5>
+            {%endfor%}
+            <br>
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action list-group-item-success"
+                href="{% url 'app:make_appointment'%}">{% trans "Make appointment"%}</a></div>
+            {% if request.user|has_group:"Admin" %}
+            <br>
+                <a class="list-group-item list-group-item-action list-group-item-success"
+                href="{% url 'app:manage_slots' doctor.id 0%}">{% trans "Manage slots"%}</a>
+            {% endif %} 
+        </div>
     </div>
 </div>
 {% endblock content %}

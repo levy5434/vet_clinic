@@ -9,7 +9,7 @@
     <div class = "offser-3 col-md-5">
 <form action = "{% url 'app:add_medicine' disease.id%}" method='post'>
     {% csrf_token %}
-    {{form.as_p}}
+    {{form|crispy}}
     <button name='submit'>{% trans "Add medicine"%}</button>
 </form>
 </div>

@@ -1,0 +1,23 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block page_header %}
+<h2>{% trans "Add client to appointment"%}</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="container p-3 mx-3 bg-light text-black">
+    <h6>{% trans "Date of visit"%}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>
+    <h6>{% trans "Service"%}: {{appointment.service}}</h6>
+    <h6>{% trans "Doctor"%}: {{appointment.doctor}}</h6>
+    <p>{% trans "Additional information"%}: {{appointment.information|linebreaks}}</p>
+    <form method='GET' action=''>
+        <input class='form-control' name='q' placeholder= "{% trans "Search by last name" %}" />
+    </form>
+    <p></p>
+    {% for client in clients%}
+    <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:add_client_appointment_f' appointment.id client.id%}">{{client.first_name}} {{client.last_name}},&nbsp;&nbsp;&nbsp;&nbsp; {{client.profile.phone_number}}, {{client.profile.city}}</a>
+    {% empty %}
+        <h5>{% trans "No patients"%}</h5>
+    {%endfor%}
+</div>    
+{% endblock content %}
+

@@ -1,27 +1,26 @@
 {% extends "app/base.html" %}
 {% load i18n %}
+{% load static%}
 {% block page_header %}
 <h2>{% trans "Our doctors"%}</h2>
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3  text-black border">
-<div class="row justify-content-md-center">
-    {% for doctor in doctors%}
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-0 shadow">
-                <img src= "{{doctor.image.url}}" class="card-img-top" alt="..." width="420" height="210">
-                <div class="card-body text-center">
-                <a href="{% url 'app:doctor' doctor.id %}" style="text-decoration: none;"><h5 class="card-title mb-0">{{doctor}}</h5></a>
-                <div class="card-text text-black-50">{{doctor.speciality}}</div>
+    <div class="row justify-content-md-center">
+        {% for doctor in doctors%}
+            <div class="col-xl-3 col-md-6 mb-4 position-relative">
+                <div class="card border-0 shadow">
+                    <img src= "{{doctor.image.url}}" class="card-img-top" alt="..." width="420" height="210">
+                    <div class="card-body text-center">
+                    <a href="{% url 'app:doctor' doctor.id %}" class='stretched-link' style="text-decoration: none;"><h5 class="card-title mb-0">{{doctor}}</h5></a>
+                    <div class="card-text text-black-50">{{doctor.speciality}}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <p></p>
-    {% empty %}
-        <a class="list-group-item list-group-item-action">{% trans "No doctors added yet." %}</a>
-    {%endfor%}
-</div>
-<a class="list-group-item list-group-item-action list-group-item-success"
-href="{% url 'app:make_appointment'%}">Make appointment </a>
+            <p></p>
+        {% empty %}
+            <a class="list-group-item list-group-item-action">{% trans "No doctors added yet." %}</a>
+        {%endfor%}
+    </div>
 </div>
 {% endblock content %}
