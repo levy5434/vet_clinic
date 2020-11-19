@@ -10,19 +10,19 @@
 {% endblock page_header %}
 {% block content %}
 {% if request.user|has_group:"Admin" %}
-    <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:add_pet' client.id %}">{% trans "Add new pet"%}</a>
+    <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_pet' client.id %}">{% trans "Add new pet"%}</a>
     {%endif%}
     <br>
     <h4>{% trans "Pets" %}:</h4>
     {% for animal in animals%}
-        <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:disease' animal.id %}">{{animal}}</a>
+        <a class="list-group-item list-group-item-action list-group-item-info" href="{% url 'app:disease' animal.id %}">{{animal}}</a>
         <p></p>
         {% empty %}
         <h5>{% trans "No pets"%}</h5>
     {%endfor%}
     <br>
     {% if appointments%}
-    <h4>{% trans "Upcoming appointments:</h4>
+    <h4>{% trans "Upcoming appointments"%}:</h4>
     {% for appointment in appointments %}
         <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:appointment' appointment.id %}">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment}}</a>
     {%endfor%}
@@ -31,7 +31,7 @@
     {% if past_appointments%}
     <h4>{% trans "Past appointments" %}:</h4>
     {% for appointment in past_appointments %}
-        <a class="list-group-item list-group-item-action list-group-item-info"
+        <a class="list-group-item list-group-item-action list-group-item-success"
         href="javascript:showhide('{{appointment.id}}')">{{appointment.date|date:"SHORT_DATE_FORMAT"}} - {{appointment.animal}} - {{appointment.service}} - {{appointment.doctor}}</a>
         <div class="container p-3 mx-3 bg-light text-black" id="{{appointment.id}}" style="display: none;" >
             <h6>{% trans "Date of visit" %}: {{appointment.date|date:"SHORT_DATE_FORMAT"}} {{appointment.start_time}}</h5>

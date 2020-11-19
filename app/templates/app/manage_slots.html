@@ -8,14 +8,6 @@
         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
     {% endfor %}
 {% endif %}
-<style>
-@media screen and (max-width: 600px) {
-    .column {
-      flex: 100%;
-      max-width: 100%;
-    }
-}
-</style>
 {% endblock page_header %}
 {% block content %}
 <div class="container p-3 my-3 bg-light text-black border">

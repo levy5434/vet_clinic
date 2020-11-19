@@ -31,7 +31,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Do you want to delete</h5>
+              <h5 class="modal-title" id="deleteModalLabel">{% trans "Do you want to delete"}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -77,7 +77,7 @@
         {% endif %}
         <p>{% trans "Introduction date:"%} {{medicine.introduction_date|date:"SHORT_DATE_FORMAT"}}</p>
         {% if medicine.end_data != Null%}
-        <p>{% trans "End date:"%} {{medicine.end_data|date:"SHORT_DATE_FORMAT"}}</p>
+        <p>{% trans "End date"%}: {{medicine.end_data|date:"SHORT_DATE_FORMAT"}}</p>
         {% endif%}
         <p>{{medicine.doctor}}</p>
         {% if request.user|has_group:"Doctors" %}
@@ -88,7 +88,7 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Do you want to delete</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">{% trans "Do you want to delete"}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -103,7 +103,7 @@
                         {% endif %}
                         <p>{% trans "Introduction date:"%} {{medicine.introduction_date|date:"SHORT_DATE_FORMAT"}}</p>
                         {% if medicine.end_data != Null%}
-                        <p>{% trans "End date:"%} {{medicine.end_data|date:"SHORT_DATE_FORMAT"}}</p>
+                        <p>{% trans "End date"%}: {{medicine.end_data|date:"SHORT_DATE_FORMAT"}}</p>
                         {% endif%}
                         <p>{{medicine.doctor}}</p>
                     </div>

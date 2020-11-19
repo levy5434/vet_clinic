@@ -29,7 +29,7 @@
             {%endfor%}
         </div>
         <div class="col p-3">
-            <h6>{% trans "Takes patients:" %}</h6>
+            <h6>{% trans "Takes patients" %}:</h6>
             {% for slot in slots%}
             <div class="list-group-item list-group-item-light">{{slot.date|date:"l"}}
             {{slot.start_time}}-{{slot.end_time}}</div>

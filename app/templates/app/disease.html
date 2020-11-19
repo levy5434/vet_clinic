@@ -17,18 +17,18 @@
     <a class="list-group-item list-group-item-action list-group-item-success" href="{% url 'app:add_disease' animal.id %}">{% trans "Add new disease"%}</a>
     <br>
     {% endif %}
-  <h5>{% trans "Actual diseases"%}:</h5>
-  {% for disease in actual_diseases%}
-    <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
-  {% empty%}
-    <p>No registered diseases</p>
-  {% endfor %}
-  <h5>{% trans "Past diseases"%}:</h5>
-      {% for disease in past_diseases%}
+    {% if actual_diseases%} 
+      <h5>{% trans "Actual diseases"%}:</h5>
+    {% endif %}
+    {% for disease in actual_diseases%}
+      <a class="list-group-item list-group-item-action list-group-item-primary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
+    {% endfor %}
+    {% if past_diseases%}
+      <h5>{% trans "Past diseases"%}:</h5>
+    {% endif %}
+    {% for disease in past_diseases%}
         <a class="list-group-item list-group-item-action list-group-item-secondary" href="{% url 'app:check_disease' disease.id%}">{{disease}}</a>
-      {% empty%}
-        <p>{% trans "No registered diseases"%}</p>
-      {%endfor%}
+    {%endfor%}
     {% if appointments%}
     <br>
     <h5>{% trans "Appointments"%}:</h5>

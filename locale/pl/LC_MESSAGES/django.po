@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-17 18:05+0100\n"
+"POT-Creation-Date: 2020-11-19 16:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,10 +32,8 @@ msgstr "Dodaj klienta do wizyty"
 #: .\app\templates\app\disease.html:40 .\app\templates\app\reschedule.html:13
 #: .\app\templates\app\reschedule_confirm.html:17
 #: .\app\templates\app\reschedule_confirm.html:26
-#, fuzzy
-#| msgid "Date of birth"
 msgid "Date of visit"
-msgstr "Data urodzenia"
+msgstr "Data wizyty"
 
 #: .\app\templates\app\add_client_appointment.html:9
 #: .\app\templates\app\add_client_appointment_f.html:16
@@ -57,7 +55,7 @@ msgstr "Usługa"
 #: .\app\templates\app\appointment.html:116 .\app\templates\app\client.html:39
 #: .\app\templates\app\disease.html:42 .\app\templates\app\doctor.html:5
 #: .\app\templates\app\make_appointment_f.html:12
-#: .\app\templates\app\manage_slots.html:23
+#: .\app\templates\app\manage_slots.html:15
 #: .\app\templates\app\my_appointments.html:20
 #: .\app\templates\app\reschedule.html:15
 #: .\app\templates\app\reschedule_confirm.html:19
@@ -103,7 +101,9 @@ msgid "To"
 msgstr "Do"
 
 #: .\app\templates\app\add_client_appointment_f.html:19
-msgid "This action can not  be reversed!"
+#, fuzzy
+#| msgid "This action can not  be reversed!"
+msgid "This action can not be reversed!"
 msgstr "Nie można cofnąć tej czynności"
 
 #: .\app\templates\app\add_client_appointment_f.html:20
@@ -171,7 +171,7 @@ msgid "No slots"
 msgstr "Brak zwierząt"
 
 #: .\app\templates\app\add_slot.html:29
-#: .\app\templates\app\manage_slots.html:49
+#: .\app\templates\app\manage_slots.html:41
 #, fuzzy
 #| msgid "Add pet"
 msgid "Add slot"
@@ -246,7 +246,7 @@ msgid "Actual"
 msgstr "Aktualne"
 
 #: .\app\templates\app\appointment.html:101
-#: .\app\templates\app\disease.html:26
+#: .\app\templates\app\disease.html:27
 msgid "Past diseases"
 msgstr "Przebyte choroby"
 
@@ -370,7 +370,7 @@ msgstr "Data wprowadzenia:"
 #: .\app\templates\app\check_disease.html:106
 #, fuzzy
 #| msgid "End data:"
-msgid "End date:"
+msgid "End date"
 msgstr "Data zakończenia:"
 
 #: .\app\templates\app\check_disease.html:117
@@ -390,6 +390,12 @@ msgstr "Zwierzęta"
 #| msgid "My pets"
 msgid "No pets"
 msgstr "Brak zwierząt"
+
+#: .\app\templates\app\client.html:25
+#, fuzzy
+#| msgid "My pets"
+msgid "Upcoming appointments"
+msgstr "Moje zwierzęta"
 
 #: .\app\templates\app\client.html:32
 msgid "Past appointments"
@@ -413,17 +419,9 @@ msgstr "z"
 msgid "from database?"
 msgstr "z bazy danych?"
 
-#: .\app\templates\app\disease.html:20
-#, fuzzy
-#| msgid "Past diseases"
+#: .\app\templates\app\disease.html:21
 msgid "Actual diseases"
-msgstr "Przebyte choroby"
-
-#: .\app\templates\app\disease.html:30
-#, fuzzy
-#| msgid "register date"
-msgid "No registered diseases"
-msgstr "Data rejestracji"
+msgstr "Aktualne choroby"
 
 #: .\app\templates\app\disease.html:48
 msgid "Delete pet"
@@ -444,7 +442,7 @@ msgstr "Brak dodanych usług."
 #: .\app\templates\app\doctor.html:32
 #, fuzzy
 #| msgid "No patients"
-msgid "Takes patients:"
+msgid "Takes patients"
 msgstr "Brak pacjentów"
 
 #: .\app\templates\app\doctor.html:42 .\app\templates\app\index.html:14
@@ -535,7 +533,7 @@ msgstr "Data"
 
 #: .\app\templates\app\make_appointment_s.html:30
 #: .\app\templates\app\make_appointment_s.html:88
-#: .\app\templates\app\manage_slots.html:24
+#: .\app\templates\app\manage_slots.html:16
 #: .\app\templates\app\my_schedule.html:21
 msgid "Week"
 msgstr "Tydzień"
@@ -544,37 +542,39 @@ msgstr "Tydzień"
 msgid "More hours"
 msgstr "Więcej godzin"
 
-#: .\app\templates\app\make_appointment_s.html:119
-msgid "Close"
-msgstr "Zamknij"
-
-#: .\app\templates\app\manage_slots.html:28
+#: .\app\templates\app\make_appointment_s.html:70
+#: .\app\templates\app\manage_slots.html:20
 #: .\app\templates\app\my_schedule.html:34
 #: .\app\templates\app\reschedule.html:39
 msgid "Previous week"
 msgstr "Poprzedni tydzień"
 
-#: .\app\templates\app\manage_slots.html:31
+#: .\app\templates\app\make_appointment_s.html:74
+#: .\app\templates\app\manage_slots.html:23
 #: .\app\templates\app\my_schedule.html:40
 #: .\app\templates\app\reschedule.html:45
 msgid "Next week"
 msgstr "Nastepny tydzień"
 
-#: .\app\templates\app\manage_slots.html:38
+#: .\app\templates\app\make_appointment_s.html:119
+msgid "Close"
+msgstr "Zamknij"
+
+#: .\app\templates\app\manage_slots.html:30
 msgid "Go to slot"
 msgstr "Przejdź do slotu"
 
-#: .\app\templates\app\manage_slots.html:40 .\app\templates\app\slot.html:15
+#: .\app\templates\app\manage_slots.html:32 .\app\templates\app\slot.html:15
 msgid "No appointments for this day"
 msgstr "Brak spotkań na ten dzień"
 
-#: .\app\templates\app\manage_slots.html:42
+#: .\app\templates\app\manage_slots.html:34
 #, fuzzy
 #| msgid "Delete pet"
 msgid "Delete slot"
 msgstr "Usuń zwierzę"
 
-#: .\app\templates\app\manage_slots.html:45
+#: .\app\templates\app\manage_slots.html:37
 msgid "No slots for this week"
 msgstr "Brak slotów w tym tygodniu"
 
@@ -750,6 +750,9 @@ msgstr "Zmień hasło"
 #: .\user\templates\registration\register.html:5
 msgid "Register Page"
 msgstr "Zarejestruj"
+
+msgid "No registered diseases"
+msgstr "Brak zarejestrowanych chorób"
 
 msgid "Warning!"
 msgstr "Uwaga"
