@@ -6,23 +6,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0011_auto_20200918_1457'),
+        ("user", "0011_auto_20200918_1457"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
             ],
             options={
-                'verbose_name_plural': 'Services',
+                "verbose_name_plural": "Services",
             },
         ),
         migrations.AddField(
-            model_name='doctor',
-            name='services',
-            field=models.ManyToManyField(to='user.Service'),
+            model_name="doctor",
+            name="services",
+            field=models.ManyToManyField(to="user.Service"),
         ),
     ]

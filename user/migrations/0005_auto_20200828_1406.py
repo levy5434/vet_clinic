@@ -6,17 +6,17 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0004_auto_20200828_1339'),
+        ("user", "0004_auto_20200828_1339"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='doctor',
-            options={'verbose_name_plural': 'Doctors'},
+            name="doctor",
+            options={"verbose_name_plural": "Doctors"},
         ),
         migrations.RenameField(
-            model_name='doctor',
-            old_name='profile',
-            new_name='user',
+            model_name="doctor",
+            old_name="profile",
+            new_name="user",
         ),
     ]

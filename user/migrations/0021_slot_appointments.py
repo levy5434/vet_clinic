@@ -6,14 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0011_remove_appointment_slot'),
-        ('user', '0020_delete_appointment'),
+        ("app", "0011_remove_appointment_slot"),
+        ("user", "0020_delete_appointment"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='slot',
-            name='appointments',
-            field=models.ManyToManyField(to='app.Appointment'),
+            model_name="slot",
+            name="appointments",
+            field=models.ManyToManyField(to="app.Appointment"),
         ),
     ]

@@ -6,35 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0016_auto_20200920_1839'),
+        ("user", "0016_auto_20200920_1839"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='slot',
-            name='appointment',
+            model_name="slot",
+            name="appointment",
         ),
         migrations.RemoveField(
-            model_name='slot',
-            name='dateTime',
+            model_name="slot",
+            name="dateTime",
         ),
         migrations.RemoveField(
-            model_name='slot',
-            name='status',
+            model_name="slot",
+            name="status",
         ),
         migrations.AddField(
-            model_name='slot',
-            name='date',
+            model_name="slot",
+            name="date",
             field=models.DateField(null=True),
         ),
         migrations.AddField(
-            model_name='slot',
-            name='end_time',
+            model_name="slot",
+            name="end_time",
             field=models.TimeField(null=True),
         ),
         migrations.AddField(
-            model_name='slot',
-            name='start_time',
+            model_name="slot",
+            name="start_time",
             field=models.TimeField(null=True),
         ),
     ]

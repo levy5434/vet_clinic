@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0020_appointment_slot'),
+        ("app", "0020_appointment_slot"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='appointment',
-            name='admin_only',
-            field=models.BooleanField(null=True, verbose_name='staff only'),
+            model_name="appointment",
+            name="admin_only",
+            field=models.BooleanField(null=True, verbose_name="staff only"),
         ),
     ]
